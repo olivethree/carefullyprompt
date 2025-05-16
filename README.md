@@ -6,7 +6,8 @@
 
 ## Prompt library for AI-assisted academic writing with ethical guidance
 
-**[➡️ Access the CARefully prompt library here](https://yourusername.github.io/carefully-prompt-your-ai)**
+**[➡️ Access the CARefully prompt library here]([https://olivethree.github.io/carefullyprompt](https://olivethree.github.io/carefullyprompt/))**
+
 
 CARefully prompt your AI is an interactive library of carefully designed prompts that help academics, researchers, and educators use AI writing tools more effectively and ethically. With prompts organized by writing goals and categorized according to ethical considerations, this tool helps you maintain control and integrity in your academic writing process.
 
