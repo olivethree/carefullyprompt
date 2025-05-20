@@ -30,21 +30,21 @@ Simply browse categories, select a specific task, and copy the prompt template t
 
 The library is organized according to the CARe framework (Oliveira, 2025), with a focus on the Articulate stage:
 
-### C: Collect (Gather Ideas & Strategic Evaluation)
-- **What it is:** Working with AI to gather and organize ideas, sources, and key points to lay a strong foundation for your writing.
-- **Your Role:** You guide the AI to find relevant content and structure it logically, carefully evaluating suggestions to ensure accuracy, relevance, and fairness.
+### C: Collect (Gather information/ideas & Plan your content)
+- **What it is:** Working with AI to efficiently gather and organize ideas and sources for your writing (e.g. finding sources through questions, brainstorming with AI)
+- **Your Role:** You guide the AI to select content and structure it, while evaluating accuracy and relevance. Treat AI output critically, your intent should steer it.
 
-### A: Articulate (Drafting & Generating Text + Critical Mid-Stage Evaluation)
-- **What it is:** Using AI tools with specific prompts to help articulate your ideas, draft sentences or paragraphs, rephrase text, or get scaffolding for sections.
-- **Your Role:** You continuously evaluate every piece of text the AI generates for accuracy, tone, clarity, relevance, and immediate red flags. You begin the iterative refinement process based on this evaluation.
+### A: Articulate (Drafting & Editing Text + Critical evaluation)
+- **What it is:** Using AI tools (chatbots, etc.) with specific prompts to help articulate your ideas, draft sentences or paragraphs, rephrase text, or get scaffolding for sections.
+- **Your Role:** You continuously **e**valuate every piece of text the AI generates for accuracy, tone, clarity, relevance, and immediate red flags (hallucinations). You start iteratively refining content based on critical evaluation.
 
-### R: Refine (Comprehensive Review, Verification & Final Polishing)
-- **What it is:** The critical final phase where you ensure academic rigor, integrity, and the final quality of the writing. This involves rigorous verification, bias detection, ensuring integrity, maintaining your authorial voice, and final polishing.
-- **Your Role:** You are in full control, making all final decisions. You rigorously verify AI claims against original sources. You actively shape the text to reflect your voice and analysis.
+### R: Refine (Comprehensive review, verification & final polishing)
+- **What it is:** A critical final phase where you enforce academic rigor, integrity, and the final quality of the writing. Involves: bias detection, verification of citations and potential plagiarism, **maintaining your authorial voice**, final polishing.
+- **Your Role:** You are in full control, making all final decisions. You rigorously verify AI claims against original sources. You actively shape the text to reflect your voice and analysis. AI can assist in polishing after your critical checks.
 
 ### e: evaluate strategically & ethically
-- **What it is:** This lowercase 'e' is a constant reminder that critical evaluation is a continuous, strategic, and ethical mindset applied throughout the entire process.
-- **Your Role:** You pause and evaluate strategically (Is this helping? What's next?) and ethically (Bias? Transparency? Integrity?) at every point you interact with AI output. You are the responsible author.
+- **What it is:** ○	This is a constant reminder that **critical evaluation is a continuous, strategic, and ethical mindset** applied throughout the entire process.
+- **Your Role:** You pause and evaluate strategically (Is this helping? What's next?) and ethically (Bias? Transparency? Scientific integrity?) at every point you interact with AI output. **REMEMBER: You are the responsible author**.
 
 ## Ethical Tier System
 
@@ -54,7 +54,7 @@ The library uses a three-tier ethical framework from Cheng et al. (2025):
 - **Tier 2: Ethically Contingent** - Tasks like generating drafts based on significant user input, summarizing user-provided content, improving clarity, brainstorming ideas, rephrasing, or adjusting tone. These tasks require careful human oversight.
 - **Tier 3: Ethically Suspect/Not Recommended** - Tasks involving drafting entirely new text with minimal user input or developing entirely new concepts.
 
-## How to Use the Library
+## How to use the Prompt Library
 
 1. Browse the main categories (Improve Existing Text, Drafting Assistance, Maintain Voice & Precision)
 2. Select a specific task from the subcategories
