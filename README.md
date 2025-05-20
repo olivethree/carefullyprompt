@@ -79,7 +79,7 @@ Contributions are welcome! If you'd like to suggest new prompts, improvements to
 
 - Cheng, A., Calhoun, A., & Reedy, G. (2025). Artificial intelligence-assisted academic writing: recommendations for ethical use. *Advances in Simulation, 10*(1), 22. https://doi.org/10.1186/s41077-025-00350-6
   
-- Oliveira, M. B. (2025). CARefully prompt your AI: A prompt library for AI-assisted academic writing with ethical guidance (Version 1.0.0) [Computer software]. Zenodo. [https://doi.org/10.5072/zenodo.259251](https://doi.org/10.5072/zenodo.259251)
+- Oliveira, M. (2025). CARefully prompt your AI: A prompt library for AI-assisted academic writing with ethical guidance (v1.0). Zenodo. [https://doi.org/10.5072/zenodo.259251](https://doi.org/10.5072/zenodo.259251)
 
 ## License
 
