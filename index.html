@@ -1,4 +1,7 @@
-<!DOCTYPE html><html lang="en"><head><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CARefully prompt your AI</title>
@@ -9,190 +12,303 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#5D5CDE',
-                        secondary: '#8382E7',
+                        primary: '#D64161', // Cherry blossom red - primary color
+                        secondary: '#FFB7C5', // Lighter cherry blossom pink
+                        accent: '#424242', // Dark accent for contrast
+                        zensand: '#F2EFE9', // Zen Sand background color
                         neutral: {
-                            100: '#F3F4F6',
-                            200: '#E5E7EB',
-                            800: '#1F2937',
-                            900: '#111827',
+                            100: '#FFFFFF', // Pure white
+                            200: '#F7F7F7', // Light gray
+                            300: '#E0E0E0', // Medium gray
+                            800: '#212121', // Near black
+                            900: '#121212', // True black
                         },
-                        tier1: '#4ade80', // Green for Tier 1
-                        tier2: '#facc15', // Yellow for Tier 2
-                        tier3: '#ef4444', // Red for Tier 3
+                        tier1: '#4D8C57', // Subtle green for Tier 1
+                        tier2: '#E9B872', // Muted gold for Tier 2
+                        tier3: '#D64161', // Cherry red for Tier 3 (same as primary)
                     },
                     fontFamily: {
-                        'sans': ['Inter', 'sans-serif'],
+                        'sans': ['"Noto Sans"', 'sans-serif'],
+                        'serif': ['"Noto Serif"', 'serif'],
                     },
                     borderRadius: {
-                        'xl': '1rem',
+                        'xl': '0.75rem',
                     }
                 }
-            }
+            },
+            darkMode: 'class'
         }
 
-        // Check for dark mode preference
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        // Initialize dark mode based on saved preference or system preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
         }
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-            if (event.matches) {
-                document.documentElement.classList.add('dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-            }
-        });
     </script>
-    <!-- Inter font -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap">
+    <!-- Noto Sans and Noto Serif fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Serif:wght@400;600;700&display=swap">
     <style>
         /* Custom styles that extend Tailwind */
+        body {
+            @apply bg-zensand dark:bg-neutral-900 text-accent dark:text-white;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            @apply font-serif text-primary dark:text-secondary;
+        }
+        
         .prompt-box {
-            @apply p-4 rounded-xl border bg-white dark:bg-neutral-800 dark:border-neutral-700 shadow-md my-4;
+            @apply p-6 rounded-xl border border-neutral-300 bg-white dark:bg-neutral-800 dark:border-neutral-700 shadow-sm my-6;
         }
+        
         .copy-button {
-            @apply absolute top-2 right-2 p-2 text-sm rounded-md bg-primary text-white opacity-0 transition-opacity duration-200 hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary;
+            @apply absolute top-3 right-3 p-2 text-sm rounded-md bg-primary text-white opacity-0 transition-opacity duration-200 hover:bg-secondary hover:text-accent focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary cursor-pointer;
         }
+        
         .prompt-container:hover .copy-button {
             @apply opacity-100;
         }
+        
         .back-button {
-            @apply inline-flex items-center px-4 py-2 text-sm font-medium rounded-md text-white bg-primary hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary;
+            @apply inline-flex items-center px-4 py-2 text-sm font-medium rounded-md text-white bg-primary hover:bg-secondary hover:text-accent focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all duration-200 cursor-pointer;
         }
+        
         .tier-badge {
             @apply px-2 py-1 rounded-md text-xs font-semibold text-white inline-flex items-center gap-1;
         }
+        
         .tier-1 {
             @apply bg-tier1;
         }
+        
         .tier-2 {
-            @apply bg-tier2 text-black;
+            @apply bg-tier2 text-accent;
         }
+        
         .tier-3 {
             @apply bg-tier3;
         }
+        
         .tier-legend {
-            @apply fixed bottom-0 left-0 right-0 bg-white/90 dark:bg-neutral-900/90 border-t border-gray-200 dark:border-neutral-700 py-1 px-4 text-xs z-50 flex justify-center items-center gap-4 backdrop-blur-sm;
+            @apply fixed bottom-0 left-0 right-0 bg-white/90 dark:bg-neutral-900/90 border-t border-neutral-300 dark:border-neutral-700 py-2 px-4 text-xs z-50 flex justify-center items-center gap-4 backdrop-blur-sm;
         }
+        
+        /* Dark mode toggle */
+        .theme-toggle {
+            @apply fixed top-4 right-4 z-50 flex items-center justify-center p-2 rounded-full bg-white dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 shadow transition-all duration-300 cursor-pointer;
+        }
+        
+        .theme-toggle:hover {
+            @apply shadow-md transform scale-105;
+        }
+        
+        .theme-toggle .icon {
+            @apply w-5 h-5 text-accent dark:text-neutral-200;
+        }
+        
+        /* Enhanced card styles with better hover states */
+        .category-card, .subcategory-card {
+            @apply bg-white dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 rounded-xl p-5 shadow-sm transition-all duration-300 cursor-pointer;
+        }
+        
+        .category-card:hover, .subcategory-card:hover {
+            @apply border-primary dark:border-secondary transform translate-y-[-2px] shadow-md;
+        }
+        
+        /* Text hover effect for headings inside cards */
+        .category-card h3, .subcategory-card h3 {
+            @apply transition-all duration-200;
+        }
+        
+        .category-card:hover h3, .subcategory-card:hover h3 {
+            @apply text-secondary dark:text-primary;
+        }
+        
+        /* Example toggle button and content */
+        .example-toggle {
+            @apply inline-flex items-center px-3 py-2 rounded-md border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-sm transition-all duration-200 hover:border-primary;
+        }
+        
+        .example-toggle:hover svg {
+            @apply transform translate-x-1;
+        }
+        
+        .example-content {
+            @apply border-l-2 border-secondary p-4 rounded-md bg-zensand/50 dark:bg-neutral-700/50 text-sm transition-all duration-300 ease-in-out;
+        }
+        
+        .example-content.hidden {
+            @apply opacity-0 h-0 p-0 overflow-hidden;
+        }
+        
+        .example-content:not(.hidden) {
+            @apply opacity-100 h-auto p-4;
+        }
+        
+        /* Ensure all interactive elements show pointer cursor */
+        button, [role="button"], .category-card, .subcategory-card, a {
+            cursor: pointer;
+        }
+        
         @media (max-width: 640px) {
             .tier-legend {
                 @apply flex-col py-2 gap-1;
             }
+            
+            .theme-toggle {
+                @apply top-2 right-2;
+            }
         }
     </style>
 </head>
-<body class="font-sans bg-gray-50 dark:bg-neutral-900 dark:text-white min-h-screen">
+<body class="font-sans">
+    <!-- Dark Mode Toggle -->
+    <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+        <!-- Sun icon (visible in dark mode) -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg>
+        <!-- Moon icon (visible in light mode) -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+        </svg>
+    </button>
+
     <div class="container mx-auto px-4 py-8 max-w-4xl">
-        <!-- Header Section -->
-        <header class="text-center mb-10">
-            <h1 class="text-3xl md:text-4xl font-bold text-primary mb-2">CARefully prompt your AI</h1>
-            <h2 class="text-xl md:text-2xl font-semibold mb-4">Prompt library for AI-assisted writing with ethical guidance</h2>
-            <div class="h-1 w-32 bg-primary mx-auto rounded-full"></div>
+        <!-- Header Section with Cherry Blossom Theme -->
+        <header class="text-center mb-12">
+            <h1 class="text-3xl md:text-4xl font-serif font-bold mb-3">CARefully prompt your AI</h1>
+            <h2 class="text-xl md:text-2xl font-serif font-medium mb-5 text-accent dark:text-neutral-200">Prompt library for AI-assisted writing with ethical guidance</h2>
+            <div class="relative h-px w-32 mx-auto mb-2">
+                <div class="absolute inset-0 bg-primary opacity-70"></div>
+                <div class="absolute h-1 w-1 bg-primary rounded-full left-0 top-1/2 transform -translate-y-1/2"></div>
+                <div class="absolute h-1 w-1 bg-primary rounded-full right-0 top-1/2 transform -translate-y-1/2"></div>
+            </div>
+            <!-- Cherry Blossom Decorative Element -->
+            <div class="flex justify-center space-x-1 opacity-80">
+                <span class="text-primary">●</span>
+                <span class="text-secondary">●</span>
+                <span class="text-primary">●</span>
+                <span class="text-secondary">●</span>
+                <span class="text-primary">●</span>
+            </div>
         </header>
 
         <!-- Main Content Container -->
         <main>
             <!-- Landing/Introduction Page -->
             <section id="introduction" class="py-4">
-                <div class="bg-white dark:bg-neutral-800 rounded-xl p-6 shadow-md">
-                    <h2 class="text-xl font-bold mb-4">How to Use This Library</h2>
-                    <p class="mb-4">
+                <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 shadow-sm border border-neutral-300 dark:border-neutral-700">
+                    <h2 class="text-2xl font-serif font-bold mb-6">How to Use This Library</h2>
+                    <p class="mb-5 text-accent dark:text-neutral-200 leading-relaxed">
                         Welcome to the CARefully prompt your AI library! This resource contains a collection of effective prompt templates for various writing tasks, designed to help you interact with AI writing assistants more effectively and ethically.
                     </p>
-                    <p class="mb-4">
+                    <p class="mb-6 text-accent dark:text-neutral-200 leading-relaxed">
                         Each prompt in this library is categorized based on common writing goals and includes clear ethical guidance based on the framework proposed by Cheng et al. (2025). Simply browse categories, select a specific task, and copy the prompt template that fits your needs. Replace the placeholder text with your own content before using with your preferred AI assistant.
                     </p>
                     
                     <!-- CARe Framework Description -->
-                    <div class="mb-6 p-4 bg-gray-50 dark:bg-neutral-700 rounded-lg">
-                        <h3 class="text-lg font-semibold mb-3">The CARe Framework</h3>
+                    <div class="mb-8 p-6 bg-zensand dark:bg-neutral-700 rounded-lg border-l-4 border-primary">
+                        <h3 class="text-xl font-serif font-semibold mb-4">The CARe Framework</h3>
                         
-                        <div class="mb-4">
-                            <h4 class="font-bold">C: Collect (Gather Ideas &amp; Strategic Evaluation)</h4>
+                        <div class="mb-5">
+                            <h4 class="font-bold text-primary dark:text-secondary">C: Collect (Gather Ideas &amp; Strategic Evaluation)</h4>
                             <p class="text-sm mb-1"><strong>What it is:</strong> Working with AI to gather and organize ideas, sources, and key points to lay a strong foundation for your writing.</p>
                             <p class="text-sm"><strong>Your Role:</strong> You guide the AI to find relevant content and structure it logically, carefully evaluating suggestions to ensure accuracy, relevance, and fairness.</p>
                         </div>
                         
-                        <div class="mb-4">
-                            <h4 class="font-bold">A: Articulate (Drafting &amp; Generating Text + Critical Mid-Stage Evaluation)</h4>
+                        <div class="mb-5">
+                            <h4 class="font-bold text-primary dark:text-secondary">A: Articulate (Drafting &amp; Generating Text + Critical Mid-Stage Evaluation)</h4>
                             <p class="text-sm mb-1"><strong>What it is:</strong> Using AI tools (chatbots, etc.) with specific prompts to help articulate your ideas, draft sentences or paragraphs, rephrase text, or get scaffolding for sections.</p>
                             <p class="text-sm"><strong>Your Role:</strong> You continuously evaluate every piece of text the AI generates for accuracy, tone, clarity, relevance, and immediate red flags (like obvious hallucinations). You begin the iterative refinement process based on this evaluation.</p>
                         </div>
                         
-                        <div class="mb-4">
-                            <h4 class="font-bold">R: Refine (Comprehensive Review, Verification &amp; Final Polishing)</h4>
+                        <div class="mb-5">
+                            <h4 class="font-bold text-primary dark:text-secondary">R: Refine (Comprehensive Review, Verification &amp; Final Polishing)</h4>
                             <p class="text-sm mb-1"><strong>What it is:</strong> The critical final phase where you ensure academic rigor, integrity, and the final quality of the writing. This involves rigorous verification, bias detection, ensuring integrity (citation, originality), maintaining your authorial voice, and final polishing.</p>
                             <p class="text-sm"><strong>Your Role:</strong> You are in full control, making all final decisions. You rigorously verify AI claims against original sources. You actively shape the text to reflect your voice and analysis. AI can assist in polishing after your critical checks.</p>
                         </div>
                         
                         <div>
-                            <h4 class="font-bold">e: evaluate strategically &amp; ethically</h4>
+                            <h4 class="font-bold text-primary dark:text-secondary">e: evaluate strategically &amp; ethically</h4>
                             <p class="text-sm mb-1"><strong>What it is:</strong> This lowercase 'e' is a constant reminder that critical evaluation is a continuous, strategic, and ethical mindset applied throughout the entire process (C, A, and R).</p>
                             <p class="text-sm"><strong>Your Role:</strong> You pause and evaluate strategically (Is this helping? What's next?) and ethically (Bias? Transparency? Integrity?) at every point you interact with AI output. You are the responsible author.</p>
                         </div>
                     </div>
                     
                     <!-- Ethical Tier System -->
-                    <div class="mb-6 p-4 bg-gray-50 dark:bg-neutral-700 rounded-lg">
-                        <h3 class="text-lg font-semibold mb-3">Ethical Tier System (Cheng et al., 2025)</h3>
+                    <div class="mb-8 p-6 bg-zensand dark:bg-neutral-700 rounded-lg border-l-4 border-primary">
+                        <h3 class="text-xl font-serif font-semibold mb-4">Ethical Tier System (Cheng et al., 2025)</h3>
                         
-                        <div class="flex items-start gap-2 mb-3">
+                        <div class="flex items-start gap-3 mb-4">
                             <span class="tier-badge tier-1 mt-1">Tier 1</span>
                             <div>
-                                <h4 class="font-bold">Ethically Acceptable</h4>
+                                <h4 class="font-bold text-primary dark:text-secondary">Ethically Acceptable</h4>
                                 <p class="text-sm">Tasks like grammar checking, spelling correction, readability improvements, and basic language translation of existing text.</p>
                             </div>
                         </div>
                         
-                        <div class="flex items-start gap-2 mb-3">
+                        <div class="flex items-start gap-3 mb-4">
                             <span class="tier-badge tier-2 mt-1">Tier 2</span>
                             <div>
-                                <h4 class="font-bold">Ethically Contingent</h4>
+                                <h4 class="font-bold text-primary dark:text-secondary">Ethically Contingent</h4>
                                 <p class="text-sm">Tasks like generating drafts based on significant user input, summarizing user-provided content, improving clarity, brainstorming ideas, rephrasing, or adjusting tone. <strong>Requires careful human oversight.</strong></p>
                             </div>
                         </div>
                         
-                        <div class="flex items-start gap-2">
+                        <div class="flex items-start gap-3">
                             <span class="tier-badge tier-3 mt-1">Tier 3</span>
                             <div>
-                                <h4 class="font-bold">Ethically Suspect/Not Recommended</h4>
+                                <h4 class="font-bold text-primary dark:text-secondary">Ethically Suspect/Not Recommended</h4>
                                 <p class="text-sm">Tasks involving drafting entirely new text with minimal user input or developing entirely new concepts. Most prompts in this library avoid this tier.</p>
                             </div>
                         </div>
                     </div>
                     
-                    <p class="mb-6">
+                    <p class="mb-8 text-accent dark:text-neutral-200 leading-relaxed">
                         Select a category below to find specialized prompts that will help you articulate your academic writing with precision and clarity.
                     </p>
 
-                    <h3 class="text-lg font-semibold mb-3">What would you like to accomplish?</h3>
-                    
-                    <!-- Main Category Cards -->
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <h3 class="text-xl font-serif font-semibold mb-5">What would you like to accomplish?</h3>
+                    <!-- Main Category Cards with improved hover effects -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
                         <!-- Improve Existing Text -->
-                        <div class="category-card bg-white dark:bg-neutral-800 border border-gray-200 dark:border-neutral-700 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow cursor-pointer" onclick="showCategory('improve')">
-                            <h3 class="text-lg font-semibold text-primary mb-2">Improve Existing Text</h3>
-                            <p class="text-sm text-gray-600 dark:text-gray-300">Enhance clarity, conciseness, and flow of your drafted content.</p>
+                        <div class="category-card" onclick="showCategory('improve')">
+                            <h3 class="text-lg font-serif font-semibold text-primary dark:text-secondary mb-3">Improve Existing Text</h3>
+                            <p class="text-sm text-accent dark:text-neutral-300">Enhance clarity, conciseness, and flow of your drafted content.</p>
+                            <!-- Small cherry blossom decoration -->
+                            <div class="flex justify-end mt-3">
+                                <span class="text-secondary text-xs">● ● ●</span>
+                            </div>
                         </div>
 
                         <!-- Drafting Assistance -->
-                        <div class="category-card bg-white dark:bg-neutral-800 border border-gray-200 dark:border-neutral-700 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow cursor-pointer" onclick="showCategory('drafting')">
-                            <h3 class="text-lg font-semibold text-primary mb-2">Drafting Assistance</h3>
-                            <p class="text-sm text-gray-600 dark:text-gray-300">Generate starting points and building blocks for your academic writing.</p>
+                        <div class="category-card" onclick="showCategory('drafting')">
+                            <h3 class="text-lg font-serif font-semibold text-primary dark:text-secondary mb-3">Drafting Assistance</h3>
+                            <p class="text-sm text-accent dark:text-neutral-300">Generate starting points and building blocks for your academic writing.</p>
+                            <!-- Small cherry blossom decoration -->
+                            <div class="flex justify-end mt-3">
+                                <span class="text-secondary text-xs">● ● ●</span>
+                            </div>
                         </div>
 
                         <!-- Maintain Voice & Precision -->
-                        <div class="category-card bg-white dark:bg-neutral-800 border border-gray-200 dark:border-neutral-700 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow cursor-pointer" onclick="showCategory('voice')">
-                            <h3 class="text-lg font-semibold text-primary mb-2">Maintain Voice &amp; Precision</h3>
-                            <p class="text-sm text-gray-600 dark:text-gray-300">Ensure consistency in style while preserving academic precision.</p>
+                        <div class="category-card" onclick="showCategory('voice')">
+                            <h3 class="text-lg font-serif font-semibold text-primary dark:text-secondary mb-3">Maintain Voice &amp; Precision</h3>
+                            <p class="text-sm text-accent dark:text-neutral-300">Ensure consistency in style while preserving academic precision.</p>
+                            <!-- Small cherry blossom decoration -->
+                            <div class="flex justify-end mt-3">
+                                <span class="text-secondary text-xs">● ● ●</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
-
             <!-- Improve Existing Text Category Section -->
             <section id="improve" class="py-4 hidden">
-                <div class="bg-white dark:bg-neutral-800 rounded-xl p-6 shadow-md">
+                <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 shadow-sm border border-neutral-300 dark:border-neutral-700">
                     <div class="flex items-center mb-6">
                         <button class="back-button mr-4" onclick="showIntroduction()">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -200,66 +316,66 @@
                             </svg>
                             Back
                         </button>
-                        <h2 class="text-xl font-bold">Improve Existing Text</h2>
+                        <h2 class="text-2xl font-serif font-bold">Improve Existing Text</h2>
                     </div>
-                    <p class="mb-6">Select a specific task to find prompts that will help refine your existing academic content:</p>
+                    <p class="mb-6 text-accent dark:text-neutral-200">Select a specific task to find prompts that will help refine your existing academic content:</p>
 
-                    <!-- Sub-Categories -->
+                    <!-- Sub-Categories with improved hover effects -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="subcategory-card bg-white dark:bg-neutral-800 border border-gray-200 dark:border-neutral-700 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer" onclick="showTask('rephrase-clarity')">
-                            <div class="flex justify-between items-start mb-1">
-                                <h3 class="font-semibold text-primary">Rephrase for Clarity</h3>
+                        <div class="subcategory-card" onclick="showTask('rephrase-clarity')">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif font-semibold text-primary dark:text-secondary">Rephrase for Clarity</h3>
                                 <span class="tier-badge tier-2">Tier 2</span>
                             </div>
-                            <p class="text-sm text-gray-600 dark:text-gray-300">Make complex ideas more accessible without sacrificing meaning.</p>
+                            <p class="text-sm text-accent dark:text-neutral-300">Make complex ideas more accessible without sacrificing meaning.</p>
                         </div>
 
-                        <div class="subcategory-card bg-white dark:bg-neutral-800 border border-gray-200 dark:border-neutral-700 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer" onclick="showTask('make-concise')">
-                            <div class="flex justify-between items-start mb-1">
-                                <h3 class="font-semibold text-primary">Make More Concise</h3>
+                        <div class="subcategory-card" onclick="showTask('make-concise')">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif font-semibold text-primary dark:text-secondary">Make More Concise</h3>
                                 <span class="tier-badge tier-2">Tier 2</span>
                             </div>
-                            <p class="text-sm text-gray-600 dark:text-gray-300">Reduce wordiness while preserving essential content.</p>
+                            <p class="text-sm text-accent dark:text-neutral-300">Reduce wordiness while preserving essential content.</p>
                         </div>
 
-                        <div class="subcategory-card bg-white dark:bg-neutral-800 border border-gray-200 dark:border-neutral-700 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer" onclick="showTask('enhance-flow')">
-                            <div class="flex justify-between items-start mb-1">
-                                <h3 class="font-semibold text-primary">Enhance Flow/Transitions</h3>
+                        <div class="subcategory-card" onclick="showTask('enhance-flow')">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif font-semibold text-primary dark:text-secondary">Enhance Flow/Transitions</h3>
                                 <span class="tier-badge tier-2">Tier 2</span>
                             </div>
-                            <p class="text-sm text-gray-600 dark:text-gray-300">Improve connection between ideas and paragraphs.</p>
+                            <p class="text-sm text-accent dark:text-neutral-300">Improve connection between ideas and paragraphs.</p>
                         </div>
 
-                        <div class="subcategory-card bg-white dark:bg-neutral-800 border border-gray-200 dark:border-neutral-700 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer" onclick="showTask('adjust-tone')">
-                            <div class="flex justify-between items-start mb-1">
-                                <h3 class="font-semibold text-primary">Adjust Academic Tone/Level</h3>
+                        <div class="subcategory-card" onclick="showTask('adjust-tone')">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif font-semibold text-primary dark:text-secondary">Adjust Academic Tone/Level</h3>
                                 <span class="tier-badge tier-2">Tier 2</span>
                             </div>
-                            <p class="text-sm text-gray-600 dark:text-gray-300">Modify the formality and complexity for your target audience.</p>
+                            <p class="text-sm text-accent dark:text-neutral-300">Modify the formality and complexity for your target audience.</p>
                         </div>
 
-                        <div class="subcategory-card bg-white dark:bg-neutral-800 border border-gray-200 dark:border-neutral-700 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer" onclick="showTask('simplify-complex')">
-                            <div class="flex justify-between items-start mb-1">
-                                <h3 class="font-semibold text-primary">Simplify Complex Sentences</h3>
+                        <div class="subcategory-card" onclick="showTask('simplify-complex')">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif font-semibold text-primary dark:text-secondary">Simplify Complex Sentences</h3>
                                 <span class="tier-badge tier-2">Tier 2</span>
                             </div>
-                            <p class="text-sm text-gray-600 dark:text-gray-300">Break down lengthy, intricate sentences while maintaining meaning.</p>
+                            <p class="text-sm text-accent dark:text-neutral-300">Break down lengthy, intricate sentences while maintaining meaning.</p>
                         </div>
 
-                        <div class="subcategory-card bg-white dark:bg-neutral-800 border border-gray-200 dark:border-neutral-700 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer" onclick="showTask('remove-redundancy')">
-                            <div class="flex justify-between items-start mb-1">
-                                <h3 class="font-semibold text-primary">Remove Redundancy</h3>
+                        <div class="subcategory-card" onclick="showTask('remove-redundancy')">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif font-semibold text-primary dark:text-secondary">Remove Redundancy</h3>
                                 <span class="tier-badge tier-2">Tier 2</span>
                             </div>
-                            <p class="text-sm text-gray-600 dark:text-gray-300">Identify and eliminate repetitive elements in your writing.</p>
+                            <p class="text-sm text-accent dark:text-neutral-300">Identify and eliminate repetitive elements in your writing.</p>
                         </div>
 
-                        <div class="subcategory-card bg-white dark:bg-neutral-800 border border-gray-200 dark:border-neutral-700 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer" onclick="showTask('check-grammar')">
-                            <div class="flex justify-between items-start mb-1">
-                                <h3 class="font-semibold text-primary">Check Grammar/Spelling</h3>
+                        <div class="subcategory-card" onclick="showTask('check-grammar')">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif font-semibold text-primary dark:text-secondary">Check Grammar/Spelling</h3>
                                 <span class="tier-badge tier-1">Tier 1</span>
                             </div>
-                            <p class="text-sm text-gray-600 dark:text-gray-300">Identify and correct grammatical and spelling errors.</p>
+                            <p class="text-sm text-accent dark:text-neutral-300">Identify and correct grammatical and spelling errors.</p>
                         </div>
                     </div>
                 </div>
@@ -267,7 +383,7 @@
 
             <!-- Drafting Assistance Category Section -->
             <section id="drafting" class="py-4 hidden">
-                <div class="bg-white dark:bg-neutral-800 rounded-xl p-6 shadow-md">
+                <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 shadow-sm border border-neutral-300 dark:border-neutral-700">
                     <div class="flex items-center mb-6">
                         <button class="back-button mr-4" onclick="showIntroduction()">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -275,42 +391,42 @@
                             </svg>
                             Back
                         </button>
-                        <h2 class="text-xl font-bold">Drafting Assistance</h2>
+                        <h2 class="text-2xl font-serif font-bold">Drafting Assistance</h2>
                     </div>
-                    <p class="mb-6">Select a specific task to find prompts that will help you generate new academic content:</p>
+                    <p class="mb-6 text-accent dark:text-neutral-200">Select a specific task to find prompts that will help you generate new academic content:</p>
 
-                    <!-- Sub-Categories -->
+                    <!-- Sub-Categories with improved hover effects -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="subcategory-card bg-white dark:bg-neutral-800 border border-gray-200 dark:border-neutral-700 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer" onclick="showTask('starting-sentence')">
-                            <div class="flex justify-between items-start mb-1">
-                                <h3 class="font-semibold text-primary">Generate Starting Sentence</h3>
+                        <div class="subcategory-card" onclick="showTask('starting-sentence')">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif font-semibold text-primary dark:text-secondary">Generate Starting Sentence</h3>
                                 <span class="tier-badge tier-2">Tier 2</span>
                             </div>
-                            <p class="text-sm text-gray-600 dark:text-gray-300">Create strong opening sentences for paragraphs or sections.</p>
+                            <p class="text-sm text-accent dark:text-neutral-300">Create strong opening sentences for paragraphs or sections.</p>
                         </div>
 
-                        <div class="subcategory-card bg-white dark:bg-neutral-800 border border-gray-200 dark:border-neutral-700 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer" onclick="showTask('transition-sentence')">
-                            <div class="flex justify-between items-start mb-1">
-                                <h3 class="font-semibold text-primary">Suggest Transition Sentence</h3>
+                        <div class="subcategory-card" onclick="showTask('transition-sentence')">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif font-semibold text-primary dark:text-secondary">Suggest Transition Sentence</h3>
                                 <span class="tier-badge tier-2">Tier 2</span>
                             </div>
-                            <p class="text-sm text-gray-600 dark:text-gray-300">Develop smooth connections between ideas or paragraphs.</p>
+                            <p class="text-sm text-accent dark:text-neutral-300">Develop smooth connections between ideas or paragraphs.</p>
                         </div>
 
-                        <div class="subcategory-card bg-white dark:bg-neutral-800 border border-gray-200 dark:border-neutral-700 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer" onclick="showTask('concluding-sentence')">
-                            <div class="flex justify-between items-start mb-1">
-                                <h3 class="font-semibold text-primary">Draft Concluding Sentence</h3>
+                        <div class="subcategory-card" onclick="showTask('concluding-sentence')">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif font-semibold text-primary dark:text-secondary">Draft Concluding Sentence</h3>
                                 <span class="tier-badge tier-2">Tier 2</span>
                             </div>
-                            <p class="text-sm text-gray-600 dark:text-gray-300">Create effective paragraph or section closures.</p>
+                            <p class="text-sm text-accent dark:text-neutral-300">Create effective paragraph or section closures.</p>
                         </div>
 
-                        <div class="subcategory-card bg-white dark:bg-neutral-800 border border-gray-200 dark:border-neutral-700 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer" onclick="showTask('expand-keywords')">
-                            <div class="flex justify-between items-start mb-1">
-                                <h3 class="font-semibold text-primary">Expand on Keywords/Notes</h3>
+                        <div class="subcategory-card" onclick="showTask('expand-keywords')">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif font-semibold text-primary dark:text-secondary">Expand on Keywords/Notes</h3>
                                 <span class="tier-badge tier-2">Tier 2</span>
                             </div>
-                            <p class="text-sm text-gray-600 dark:text-gray-300">Develop complete sentences from notes or bullet points.</p>
+                            <p class="text-sm text-accent dark:text-neutral-300">Develop complete sentences from notes or bullet points.</p>
                         </div>
                     </div>
                 </div>
@@ -318,7 +434,7 @@
 
             <!-- Maintain Voice & Precision Category Section -->
             <section id="voice" class="py-4 hidden">
-                <div class="bg-white dark:bg-neutral-800 rounded-xl p-6 shadow-md">
+                <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 shadow-sm border border-neutral-300 dark:border-neutral-700">
                     <div class="flex items-center mb-6">
                         <button class="back-button mr-4" onclick="showIntroduction()">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -326,43 +442,43 @@
                             </svg>
                             Back
                         </button>
-                        <h2 class="text-xl font-bold">Maintain Voice &amp; Precision</h2>
+                        <h2 class="text-2xl font-serif font-bold">Maintain Voice &amp; Precision</h2>
                     </div>
-                    <p class="mb-6">Select a specific task to find prompts that will help preserve your unique voice while maintaining academic precision:</p>
+                    <p class="mb-6 text-accent dark:text-neutral-200">Select a specific task to find prompts that will help preserve your unique voice while maintaining academic precision:</p>
 
-                    <!-- Sub-Categories -->
+                    <!-- Sub-Categories with improved hover effects -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="subcategory-card bg-white dark:bg-neutral-800 border border-gray-200 dark:border-neutral-700 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer" onclick="showTask('rewrite-style')">
-                            <div class="flex justify-between items-start mb-1">
-                                <h3 class="font-semibold text-primary">Rewrite in My Style</h3>
+                        <div class="subcategory-card" onclick="showTask('rewrite-style')">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif font-semibold text-primary dark:text-secondary">Rewrite in My Style</h3>
                                 <span class="tier-badge tier-2">Tier 2</span>
                             </div>
-                            <p class="text-sm text-gray-600 dark:text-gray-300">Maintain your authentic voice in generated or revised text.</p>
+                            <p class="text-sm text-accent dark:text-neutral-300">Maintain your authentic voice in generated or revised text.</p>
                         </div>
 
-                        <div class="subcategory-card bg-white dark:bg-neutral-800 border border-gray-200 dark:border-neutral-700 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer" onclick="showTask('suggest-alternatives')">
-                            <div class="flex justify-between items-start mb-1">
-                                <h3 class="font-semibold text-primary">Suggest Alternatives While Keeping Key Terms</h3>
+                        <div class="subcategory-card" onclick="showTask('suggest-alternatives')">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif font-semibold text-primary dark:text-secondary">Suggest Alternatives While Keeping Key Terms</h3>
                                 <span class="tier-badge tier-2">Tier 2</span>
                             </div>
-                            <p class="text-sm text-gray-600 dark:text-gray-300">Rework phrasing while preserving critical terminology.</p>
+                            <p class="text-sm text-accent dark:text-neutral-300">Rework phrasing while preserving critical terminology.</p>
                         </div>
 
-                        <div class="subcategory-card bg-white dark:bg-neutral-800 border border-gray-200 dark:border-neutral-700 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer" onclick="showTask('avoid-generic')">
-                            <div class="flex justify-between items-start mb-1">
-                                <h3 class="font-semibold text-primary">Avoid Generic AI Phrases</h3>
+                        <div class="subcategory-card" onclick="showTask('avoid-generic')">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif font-semibold text-primary dark:text-secondary">Avoid Generic AI Phrases</h3>
                                 <span class="tier-badge tier-2">Tier 2</span>
                             </div>
-                            <p class="text-sm text-gray-600 dark:text-gray-300">Eliminate formulaic expressions often found in AI-generated text.</p>
+                            <p class="text-sm text-accent dark:text-neutral-300">Eliminate formulaic expressions often found in AI-generated text.</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Task Sections (Hidden Initially) - These will show the actual prompts -->
-            <!-- Improve Existing Text Tasks -->
+            <!-- All Prompt Task Sections -->
+            <!-- 1. Rephrase for Clarity -->
             <section id="rephrase-clarity" class="py-4 hidden">
-                <div class="bg-white dark:bg-neutral-800 rounded-xl p-6 shadow-md">
+                <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 shadow-sm border border-neutral-300 dark:border-neutral-700">
                     <div class="flex items-center mb-6">
                         <button class="back-button mr-4" onclick="showCategory('improve')">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -370,21 +486,21 @@
                             </svg>
                             Back
                         </button>
-                        <h2 class="text-xl font-bold">Rephrase for Clarity</h2>
+                        <h2 class="text-2xl font-serif font-bold">Rephrase for Clarity</h2>
                     </div>
-                    <p class="mb-6">Use these prompts to make complex academic ideas more accessible without sacrificing meaning or precision:</p>
+                    <p class="mb-6 text-accent dark:text-neutral-200 leading-relaxed">Use these prompts to make complex academic ideas more accessible without sacrificing meaning or precision:</p>
 
                     <!-- Prompt 1 -->
-                    <div class="prompt-container relative mb-8">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-semibold text-lg">Targeted Clarity Enhancement</h3>
+                    <div class="prompt-container relative mb-10">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="font-serif font-semibold text-lg text-primary dark:text-secondary">Targeted Clarity Enhancement</h3>
                             <span class="tier-badge tier-2">Tier 2: Ethically Contingent</span>
                         </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">
+                        <p class="text-sm text-accent dark:text-neutral-300 mb-4 leading-relaxed">
                             This prompt helps identify and clarify specific complex parts of your text while maintaining academic rigor. <strong>Human oversight is crucial</strong> to ensure the suggested changes maintain your intended meaning.
                         </p>
                         <div class="prompt-box relative">
-                            <pre class="whitespace-pre-wrap text-sm">I need to improve the clarity of this academic text while maintaining its scholarly integrity. Please identify the 2-3 most complex or unclear parts and suggest clearer alternatives. Only rephrase what needs clarification:
+                            <pre class="whitespace-pre-wrap text-sm text-accent dark:text-neutral-200">I need to improve the clarity of this academic text while maintaining its scholarly integrity. Please identify the 2-3 most complex or unclear parts and suggest clearer alternatives. Only rephrase what needs clarification:
 
 [Your academic text here]
 
@@ -393,21 +509,44 @@ Guidelines for your response:
 - Maintain the same level of academic rigor
 - Focus only on improving clarity without changing meaning
 - Explain briefly why each suggestion improves clarity</pre>
-                            <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">Copy</button>
+                            <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <!-- Example Toggle Button -->
+                        <button class="example-toggle mt-4 text-sm text-primary dark:text-secondary transition-colors flex items-center cursor-pointer" onclick="toggleExample('clarity-example-1')">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                            <span>Show Example</span>
+                        </button>
+                        
+                        <!-- Hidden Example -->
+                        <div id="clarity-example-1" class="example-content hidden mt-4">
+                            <h4 class="text-sm font-medium text-primary dark:text-secondary mb-2">Example:</h4>
+                            <pre class="whitespace-pre-wrap text-xs text-accent dark:text-neutral-200">The implementation of traditional Dutch festive observances exhibits considerable complexity with regard to the temporal and spatial allocation of celebratory customs, particularly in the juxtaposition of the Sinterklaas celebration, occurring on the fifth of December, and the subsequent Christmas observances, which simultaneously incorporate distinctly Dutch elements while demonstrating acculturation to globalized holiday practices originating from diverse cultural sources.</pre>
+                        </div>
+                        
+                        <!-- Cherry blossom decoration -->
+                        <div class="flex justify-end mt-2">
+                            <span class="text-secondary text-xs opacity-50">● ● ●</span>
                         </div>
                     </div>
 
                     <!-- Prompt 2 -->
-                    <div class="prompt-container relative mb-8">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-semibold text-lg">Full-Text Academic Clarification</h3>
+                    <div class="prompt-container relative mb-10">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="font-serif font-semibold text-lg text-primary dark:text-secondary">Full-Text Academic Clarification</h3>
                             <span class="tier-badge tier-2">Tier 2: Ethically Contingent</span>
                         </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">
+                        <p class="text-sm text-accent dark:text-neutral-300 mb-4 leading-relaxed">
                             Use this prompt when you need to rework a longer passage for improved comprehension while maintaining academic precision. <strong>Carefully review all suggested changes</strong> to ensure they align with your original meaning.
                         </p>
                         <div class="prompt-box relative">
-                            <pre class="whitespace-pre-wrap text-sm">Rephrase this academic text for improved clarity while preserving all technical concepts and maintaining academic standards. The text is intended for [specify audience, e.g., "undergraduate students," "peer reviewers," etc.].
+                            <pre class="whitespace-pre-wrap text-sm text-accent dark:text-neutral-200">Rephrase this academic text for improved clarity while preserving all technical concepts and maintaining academic standards. The text is intended for [specify audience, e.g., "undergraduate students," "peer reviewers," etc.].
 
 [Your academic text here]
 
@@ -415,14 +554,40 @@ Please provide:
 1. A fully rephrased version with improved clarity
 2. A brief explanation of what you changed and why
 3. Note any technical terms you preserved exactly as written</pre>
-                            <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">Copy</button>
+                            <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <!-- Example Toggle Button -->
+                        <button class="example-toggle mt-4 text-sm text-primary dark:text-secondary transition-colors flex items-center cursor-pointer" onclick="toggleExample('clarity-example-2')">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                            <span>Show Example</span>
+                        </button>
+                        
+                        <!-- Hidden Example -->
+                        <div id="clarity-example-2" class="example-content hidden mt-4">
+                            <h4 class="text-sm font-medium text-primary dark:text-secondary mb-2">Example:</h4>
+                            <pre class="whitespace-pre-wrap text-xs text-accent dark:text-neutral-200">Rephrase this academic text for improved clarity while preserving all technical concepts and maintaining academic standards. The text is intended for undergraduate students in cultural anthropology.
+
+The ritualistic elements of Dutch Sinterklaas celebrations can be interpreted through multiple theoretical frameworks, including structural functionalism as proposed by Durkheim, whereby the collective festivities reinforce social solidarity; Marxist critique, which might interrogate the commodification of tradition in late-capitalist Dutch society; and postcolonial discourse analysis, which problematizes the racialized representation of Zwarte Piet within the context of the Netherlands' colonial history and contemporary multicultural tensions. The symbolic interactionism present in the tradition's performance further suggests a complex negotiation of Dutch cultural identity amidst increasing globalization and multicultural influences.</pre>
+                        </div>
+                        
+                        <!-- Cherry blossom decoration -->
+                        <div class="flex justify-end mt-2">
+                            <span class="text-secondary text-xs opacity-50">● ● ●</span>
                         </div>
                     </div>
                 </div>
             </section>
 
+            <!-- 2. Make More Concise -->
             <section id="make-concise" class="py-4 hidden">
-                <div class="bg-white dark:bg-neutral-800 rounded-xl p-6 shadow-md">
+                <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 shadow-sm border border-neutral-300 dark:border-neutral-700">
                     <div class="flex items-center mb-6">
                         <button class="back-button mr-4" onclick="showCategory('improve')">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -430,36 +595,66 @@ Please provide:
                             </svg>
                             Back
                         </button>
-                        <h2 class="text-xl font-bold">Make More Concise</h2>
+                        <h2 class="text-2xl font-serif font-bold">Make More Concise</h2>
                     </div>
-                    <p class="mb-6">Use these prompts to reduce wordiness while preserving essential content in your academic writing:</p>
+                    <p class="mb-6 text-accent dark:text-neutral-200">Use these prompts to reduce wordiness while preserving essential content in your academic writing:</p>
 
-                    <!-- Prompt 1 -->
-                    <div class="prompt-container relative mb-8">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-semibold text-lg">Word Count Reduction</h3>
+                    <!-- Prompt -->
+                    <div class="prompt-container relative mb-10">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="font-serif font-semibold text-lg text-primary dark:text-secondary">Strategic Word Count Reduction</h3>
                             <span class="tier-badge tier-2">Tier 2: Ethically Contingent</span>
                         </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">
+                        <p class="text-sm text-accent dark:text-neutral-300 mb-4 leading-relaxed">
                             This prompt helps achieve a specific word count reduction while preserving all key information. <strong>Review the output carefully</strong> to ensure no important content has been lost in the condensing process.
                         </p>
                         <div class="prompt-box relative">
-                            <pre class="whitespace-pre-wrap text-sm">Make this academic text more concise by reducing the word count by approximately [X]% while preserving all key information and maintaining academic tone:
+                            <pre class="whitespace-pre-wrap text-sm text-accent dark:text-neutral-200">Make this academic text approximately [X]% more concise while preserving all essential content, technical terminology, and scholarly tone:
 
 [Your academic text here]
 
-Please provide:
-1. The concise version with word count
-2. A brief explanation of what you removed or condensed
-3. Confirmation that all essential technical content and citations remain intact</pre>
-                            <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">Copy</button>
+Please:
+1. Maintain the same level of technical precision
+2. Preserve all key arguments and evidence
+3. Keep all citations and references intact
+4. Focus on eliminating wordiness, redundancy, and unnecessary qualifiers
+5. Provide the word count of both the original and revised versions
+
+Indicate any significant content you removed and why it was deemed non-essential.</pre>
+                            <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <!-- Example Toggle Button -->
+                        <button class="example-toggle mt-4 text-sm text-primary dark:text-secondary transition-colors flex items-center cursor-pointer" onclick="toggleExample('concise-example')">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                            <span>Show Example</span>
+                        </button>
+                        
+                        <!-- Hidden Example -->
+                        <div id="concise-example" class="example-content hidden mt-4">
+                            <h4 class="text-sm font-medium text-primary dark:text-secondary mb-2">Example:</h4>
+                            <pre class="whitespace-pre-wrap text-xs text-accent dark:text-neutral-200">Make this academic text approximately 30% more concise while preserving all essential content, technical terminology, and scholarly tone:
+
+The Dutch celebration of Sinterklaas, which occurs annually on the 5th of December, represents a distinctly significant cultural tradition that has been maintained throughout the Netherlands for many centuries. Sinterklaas, who is based on Saint Nicholas, arrives in the Netherlands by steamboat from Spain in mid-November, accompanied by his helpers called "Zwarte Piet" (Black Pete). This arrival is celebrated with considerable festivity and is broadcast on national television each year, marking the beginning of a three-week period during which children place their shoes by the fireplace or radiator in the evening, often accompanied by carrots or hay for Sinterklaas's horse, with the expectation of finding small gifts, candy, or chocolate letters in their shoes the following morning. The culmination of this period is the evening of December 5th, known as "pakjesavond" (presents evening), when larger gifts are exchanged, often accompanied by humorous poems that gently tease the recipient about their personal characteristics or notable events from the previous year.</pre>
+                        </div>
+                        
+                        <!-- Cherry blossom decoration -->
+                        <div class="flex justify-end mt-2">
+                            <span class="text-secondary text-xs opacity-50">● ● ●</span>
                         </div>
                     </div>
                 </div>
             </section>
 
+            <!-- 3. Enhance Flow/Transitions -->
             <section id="enhance-flow" class="py-4 hidden">
-                <div class="bg-white dark:bg-neutral-800 rounded-xl p-6 shadow-md">
+                <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 shadow-sm border border-neutral-300 dark:border-neutral-700">
                     <div class="flex items-center mb-6">
                         <button class="back-button mr-4" onclick="showCategory('improve')">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -467,280 +662,74 @@ Please provide:
                             </svg>
                             Back
                         </button>
-                        <h2 class="text-xl font-bold">Enhance Flow/Transitions</h2>
+                        <h2 class="text-2xl font-serif font-bold">Enhance Flow/Transitions</h2>
                     </div>
-                    <p class="mb-6">Use these prompts to improve connections between ideas and paragraphs in your academic writing:</p>
+                    <p class="mb-6 text-accent dark:text-neutral-200">Use these prompts to improve connections between ideas and paragraphs in your academic writing:</p>
 
-                    <!-- Prompt 1 -->
-                    <div class="prompt-container relative mb-8">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-semibold text-lg">Transition Enhancement</h3>
+                    <!-- Prompt -->
+                    <div class="prompt-container relative mb-10">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="font-serif font-semibold text-lg text-primary dark:text-secondary">Logical Flow Enhancement</h3>
                             <span class="tier-badge tier-2">Tier 2: Ethically Contingent</span>
                         </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">
+                        <p class="text-sm text-accent dark:text-neutral-300 mb-4 leading-relaxed">
                             This prompt helps identify and improve weak transitions between paragraphs or sections. <strong>Evaluate all suggestions</strong> to ensure they reflect the logical relationships you intend to convey.
                         </p>
                         <div class="prompt-box relative">
-                            <pre class="whitespace-pre-wrap text-sm">Analyze the transitions between paragraphs/sections in this academic text and suggest improvements to enhance flow and logical progression:
+                            <pre class="whitespace-pre-wrap text-sm text-accent dark:text-neutral-200">Analyze this academic text and improve its flow by identifying places where transitions between ideas or paragraphs are abrupt or unclear:
 
 [Your academic text here]
 
 Please:
-1. Identify weak or abrupt transitions between paragraphs/sections
-2. Suggest specific transition sentences or phrases that would strengthen connections
-3. Note any places where reorganizing content might improve flow
-4. Preserve the academic tone and technical precision throughout</pre>
-                            <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">Copy</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
+1. Identify specific locations where logical connections could be strengthened
+2. Suggest precise transition words, phrases, or sentences for each location
+3. Explain the logical relationship each suggestion is meant to signal (contrast, causation, addition, etc.)
+4. Maintain the scholarly tone and technical precision throughout
+5. Do not modify the core content or arguments
 
-            <section id="check-grammar" class="py-4 hidden">
-                <div class="bg-white dark:bg-neutral-800 rounded-xl p-6 shadow-md">
-                    <div class="flex items-center mb-6">
-                        <button class="back-button mr-4" onclick="showCategory('improve')">
+Format your response with clearly labeled sections for each transition point.</pre>
+                            <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <!-- Example Toggle Button -->
+                        <button class="example-toggle mt-4 text-sm text-primary dark:text-secondary transition-colors flex items-center cursor-pointer" onclick="toggleExample('flow-example')">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                             </svg>
-                            Back
+                            <span>Show Example</span>
                         </button>
-                        <h2 class="text-xl font-bold">Check Grammar/Spelling</h2>
-                    </div>
-                    <p class="mb-6">Use these prompts to identify and correct grammatical and spelling errors in your academic writing:</p>
+                        
+                        <!-- Hidden Example -->
+                        <div id="flow-example" class="example-content hidden mt-4">
+                            <h4 class="text-sm font-medium text-primary dark:text-secondary mb-2">Example:</h4>
+                            <pre class="whitespace-pre-wrap text-xs text-accent dark:text-neutral-200">Analyze this academic text and improve its flow by identifying places where transitions between ideas or paragraphs are abrupt or unclear:
 
-                    <!-- Prompt 1 -->
-                    <div class="prompt-container relative mb-8">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-semibold text-lg">Comprehensive Grammar and Spelling Check</h3>
-                            <span class="tier-badge tier-1">Tier 1: Ethically Acceptable</span>
+The celebration of Sinterklaas has deep historical roots in Dutch culture. The tradition dates back to medieval times and has evolved significantly over the centuries. 
+
+The figure of Sinterklaas is based on Saint Nicholas, a 4th-century Greek bishop known for his generosity. He became the patron saint of children.
+
+Modern Sinterklaas celebrations begin with the arrival of Sinterklaas by steamboat from Spain in mid-November. This event is called "intocht" and is broadcast on national television. Children put their shoes near the fireplace in the weeks leading up to December 5th.
+
+December 5th is known as "pakjesavond" or presents evening. Families gather to exchange gifts, which are often accompanied by poems. These poems typically contain gentle teasing about the recipient.
+
+Christmas is celebrated separately on December 25th in the Netherlands. Dutch Christmas has been influenced by American and German traditions.</pre>
                         </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">
-                            This prompt provides a thorough check of grammar, spelling, and punctuation while preserving all content and meaning.
-                        </p>
-                        <div class="prompt-box relative">
-                            <pre class="whitespace-pre-wrap text-sm">Check this academic text for grammar, spelling, and punctuation errors without changing any content or meaning:
-
-[Your academic text here]
-
-Please:
-1. Identify and correct all grammar, spelling, and punctuation errors
-2. Preserve all technical terminology and specialized academic language
-3. Do not change sentence structure or reword phrases unless they contain errors
-4. Format your response with:
-   - The corrected version of the text
-   - A list of the specific corrections made and why</pre>
-                            <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">Copy</button>
-                        </div>
-                    </div>
-
-                    <!-- Prompt 2 -->
-                    <div class="prompt-container relative">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-semibold text-lg">Discipline-Specific Grammar Check</h3>
-                            <span class="tier-badge tier-1">Tier 1: Ethically Acceptable</span>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">
-                            This prompt checks grammar while being mindful of discipline-specific conventions and terminology.
-                        </p>
-                        <div class="prompt-box relative">
-                            <pre class="whitespace-pre-wrap text-sm">Check this [field/discipline] academic text for grammar, spelling, and punctuation errors while respecting discipline-specific conventions:
-
-[Your academic text here]
-
-Important context:
-- Academic field: [specify your discipline, e.g., "linguistics," "chemistry," "computer science"]
-- Any discipline-specific style conventions: [e.g., "APA style," "passive voice is preferred," etc.]
-
-Please:
-1. Correct grammar, spelling, and punctuation errors only
-2. Preserve all technical terminology exactly as written
-3. Respect discipline-specific conventions for notation, abbreviations, and specialized terms
-4. Do not modify content, meaning, or argument structure
-
-Provide the corrected text followed by a list of changes made.</pre>
-                            <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">Copy</button>
+                        
+                        <!-- Cherry blossom decoration -->
+                        <div class="flex justify-end mt-2">
+                            <span class="text-secondary text-xs opacity-50">● ● ●</span>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Drafting Assistance Tasks -->
-            <section id="starting-sentence" class="py-4 hidden">
-                <div class="bg-white dark:bg-neutral-800 rounded-xl p-6 shadow-md">
-                    <div class="flex items-center mb-6">
-                        <button class="back-button mr-4" onclick="showCategory('drafting')">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-                            </svg>
-                            Back
-                        </button>
-                        <h2 class="text-xl font-bold">Generate Starting Sentence</h2>
-                    </div>
-                    <p class="mb-6">Use these prompts to create strong opening sentences for paragraphs or sections:</p>
-
-                    <!-- Prompt 1 -->
-                    <div class="prompt-container relative mb-8">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-semibold text-lg">Context-Based Topic Sentence Generator</h3>
-                            <span class="tier-badge tier-2">Tier 2: Ethically Contingent</span>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">
-                            This prompt helps create topic sentences that flow naturally from preceding content. <strong>You must provide substantial context</strong> and carefully review the generated options to select or modify the most appropriate one.
-                        </p>
-                        <div class="prompt-box relative">
-                            <pre class="whitespace-pre-wrap text-sm">Generate 3 potential academic topic sentences for a paragraph that will discuss [main concept/topic]. The paragraph will follow this preceding content:
-
-[Previous paragraph or context]
-
-The new paragraph should:
-- Address [specific aspect of topic]
-- Connect logically to the preceding content
-- Set up appropriate scholarly expectations for what follows
-- Use a tone appropriate for [audience and document type]
-
-For each option, briefly explain how it connects to the preceding content and sets up the new paragraph focus.</pre>
-                            <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">Copy</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Maintain Voice & Precision Tasks -->
-            <section id="rewrite-style" class="py-4 hidden">
-                <div class="bg-white dark:bg-neutral-800 rounded-xl p-6 shadow-md">
-                    <div class="flex items-center mb-6">
-                        <button class="back-button mr-4" onclick="showCategory('voice')">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-                            </svg>
-                            Back
-                        </button>
-                        <h2 class="text-xl font-bold">Rewrite in My Style</h2>
-                    </div>
-                    <p class="mb-6">Use these prompts to maintain your authentic voice in generated or revised text:</p>
-
-                    <!-- Prompt 1 -->
-                    <div class="prompt-container relative mb-8">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-semibold text-lg">Style-Matching Rewrite</h3>
-                            <span class="tier-badge tier-2">Tier 2: Ethically Contingent</span>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">
-                            This prompt helps adapt generated text to match your existing writing style. <strong>You must provide substantial samples</strong> of your own writing for effective style matching. Review the output carefully to ensure it maintains your voice.
-                        </p>
-                        <div class="prompt-box relative">
-                            <pre class="whitespace-pre-wrap text-sm">Rewrite this generated text to match my writing style. First, analyze the sample of my writing to identify key stylistic patterns, then apply those patterns to rewrite the generated text:
-
-MY WRITING SAMPLE:
-[Paste a sample of your own academic writing here, preferably 2-3 paragraphs]
-
-TEXT TO REWRITE:
-[Paste the text you want rewritten in your style]
-
-Please:
-1. First briefly analyze the key characteristics of my writing style (sentence structure, formality level, word choice patterns, etc.)
-2. Then rewrite the text to match these characteristics while preserving all academic content
-3. Note any specific stylistic adjustments you made</pre>
-                            <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">Copy</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="suggest-alternatives" class="py-4 hidden">
-                <div class="bg-white dark:bg-neutral-800 rounded-xl p-6 shadow-md">
-                    <div class="flex items-center mb-6">
-                        <button class="back-button mr-4" onclick="showCategory('voice')">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-                            </svg>
-                            Back
-                        </button>
-                        <h2 class="text-xl font-bold">Suggest Alternatives While Keeping Key Terms</h2>
-                    </div>
-                    <p class="mb-6">Use these prompts to rework phrasing while preserving critical terminology:</p>
-
-                    <!-- Prompt 1 -->
-                    <div class="prompt-container relative mb-8">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-semibold text-lg">Terminology-Preserving Rephrase</h3>
-                            <span class="tier-badge tier-2">Tier 2: Ethically Contingent</span>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">
-                            This prompt provides alternative phrasings while protecting essential terminology. <strong>You must clearly specify</strong> which terms must be preserved, and verify that they remain intact in the suggested alternatives.
-                        </p>
-                        <div class="prompt-box relative">
-                            <pre class="whitespace-pre-wrap text-sm">Suggest 2-3 alternative phrasings for this academic text while preserving these exact key terms and concepts:
-
-KEY TERMS TO PRESERVE EXACTLY:
-[List the specific technical terms, phrases, or concepts that must remain unchanged]
-
-TEXT TO REPHRASE:
-[Your academic text]
-
-Please provide:
-1. Alternative phrasings that vary the sentence structure and non-technical language
-2. Brief notes on how each alternative shifts the emphasis or tone
-3. Confirmation that all key technical terms are preserved exactly as listed
-
-The alternatives should maintain academic rigor and be suitable for [audience and context].</pre>
-                            <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">Copy</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="avoid-generic" class="py-4 hidden">
-                <div class="bg-white dark:bg-neutral-800 rounded-xl p-6 shadow-md">
-                    <div class="flex items-center mb-6">
-                        <button class="back-button mr-4" onclick="showCategory('voice')">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-                            </svg>
-                            Back
-                        </button>
-                        <h2 class="text-xl font-bold">Avoid Generic AI Phrases</h2>
-                    </div>
-                    <p class="mb-6">Use these prompts to eliminate formulaic expressions often found in AI-generated text:</p>
-
-                    <!-- Prompt 1 -->
-                    <div class="prompt-container relative mb-8">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-semibold text-lg">AI Pattern Detection and Revision</h3>
-                            <span class="tier-badge tier-2">Tier 2: Ethically Contingent</span>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">
-                            This prompt identifies and eliminates common AI writing patterns. <strong>Review suggested revisions carefully</strong> to ensure they maintain your intended meaning and voice.
-                        </p>
-                        <div class="prompt-box relative">
-                            <pre class="whitespace-pre-wrap text-sm">Identify and eliminate any generic AI-like phrases or patterns in this academic text, replacing them with more authentic scholarly language:
-
-[Your academic text]
-
-Please:
-1. Identify common AI patterns such as:
-   - Formulaic introductions or conclusions
-   - Overuse of phrases like "it is important to note," "it is worth mentioning," etc.
-   - Repetitive transition phrases
-   - Overly balanced sentence structures
-   - Predictable paragraph organization
-
-2. Replace identified patterns with more authentic academic alternatives
-
-3. Explain what you changed and why it improves authenticity
-
-The revised text should maintain all academic content while reading more like natural human scholarly writing.</pre>
-                            <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">Copy</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Additional Missing Sections -->
-            <!-- Adjust Academic Tone Section -->
+            <!-- 4. Adjust Academic Tone/Level -->
             <section id="adjust-tone" class="py-4 hidden">
-                <div class="bg-white dark:bg-neutral-800 rounded-xl p-6 shadow-md">
+                <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 shadow-sm border border-neutral-300 dark:border-neutral-700">
                     <div class="flex items-center mb-6">
                         <button class="back-button mr-4" onclick="showCategory('improve')">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -748,21 +737,21 @@ The revised text should maintain all academic content while reading more like na
                             </svg>
                             Back
                         </button>
-                        <h2 class="text-xl font-bold">Adjust Academic Tone/Level</h2>
+                        <h2 class="text-2xl font-serif font-bold">Adjust Academic Tone/Level</h2>
                     </div>
-                    <p class="mb-6">Use these prompts to modify the formality and complexity for your target audience:</p>
+                    <p class="mb-6 text-accent dark:text-neutral-200">Use these prompts to modify the formality and complexity for your target audience:</p>
 
-                    <!-- Prompt 1 -->
-                    <div class="prompt-container relative mb-8">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-semibold text-lg">Audience-Specific Tone Adjustment</h3>
+                    <!-- Prompt -->
+                    <div class="prompt-container relative mb-10">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="font-serif font-semibold text-lg text-primary dark:text-secondary">Audience-Specific Tone Adjustment</h3>
                             <span class="tier-badge tier-2">Tier 2: Ethically Contingent</span>
                         </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">
+                        <p class="text-sm text-accent dark:text-neutral-300 mb-4 leading-relaxed">
                             This prompt adapts your content to a specific academic audience while maintaining all essential information. <strong>Review the output carefully</strong> to ensure it maintains the correct level of precision.
                         </p>
                         <div class="prompt-box relative">
-                            <pre class="whitespace-pre-wrap text-sm">Adjust the tone and complexity level of this academic text for a [specific audience, e.g., "undergraduate students," "interdisciplinary conference," "grant review committee"]:
+                            <pre class="whitespace-pre-wrap text-sm text-accent dark:text-neutral-200">Adjust the tone and complexity level of this academic text for a [specific audience, e.g., "undergraduate students," "interdisciplinary conference," "grant review committee"]:
 
 [Your academic text here]
 
@@ -775,15 +764,45 @@ Tone guidelines:
 - Formality level: [specify, e.g., "highly formal," "accessible but scholarly"]
 - Technical vocabulary: [specify, e.g., "define technical terms," "maintain specialized vocabulary"]
 - Sentence complexity: [specify preference]</pre>
-                            <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">Copy</button>
+                            <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <!-- Example Toggle Button -->
+                        <button class="example-toggle mt-4 text-sm text-primary dark:text-secondary transition-colors flex items-center cursor-pointer" onclick="toggleExample('tone-example')">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                            <span>Show Example</span>
+                        </button>
+                        
+                        <!-- Hidden Example -->
+                        <div id="tone-example" class="example-content hidden mt-4">
+                            <h4 class="text-sm font-medium text-primary dark:text-secondary mb-2">Example:</h4>
+                            <pre class="whitespace-pre-wrap text-xs text-accent dark:text-neutral-200">Adjust the tone and complexity level of this academic text for an undergraduate audience, making it more accessible while maintaining scholarly credibility:
+
+The ritualistic elements of Dutch Sinterklaas celebrations can be interpreted through multiple theoretical frameworks, including structural functionalism as proposed by Durkheim, whereby the collective festivities reinforce social solidarity; Marxist critique, which might interrogate the commodification of tradition in late-capitalist Dutch society; and postcolonial discourse analysis, which problematizes the racialized representation of Zwarte Piet within the context of the Netherlands' colonial history and contemporary multicultural tensions. The symbolic interactionism present in the tradition's performance further suggests a complex negotiation of Dutch cultural identity amidst increasing globalization and multicultural influences.
+
+Tone guidelines:
+- Formality level: Moderate (accessible yet scholarly)
+- Technical vocabulary: Define or simplify when necessary
+- Sentence complexity: Reduce without oversimplifying concepts</pre>
+                        </div>
+                        
+                        <!-- Cherry blossom decoration -->
+                        <div class="flex justify-end mt-2">
+                            <span class="text-secondary text-xs opacity-50">● ● ●</span>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Simplify Complex Sentences Section -->
+            <!-- 5. Simplify Complex Sentences -->
             <section id="simplify-complex" class="py-4 hidden">
-                <div class="bg-white dark:bg-neutral-800 rounded-xl p-6 shadow-md">
+                <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 shadow-sm border border-neutral-300 dark:border-neutral-700">
                     <div class="flex items-center mb-6">
                         <button class="back-button mr-4" onclick="showCategory('improve')">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -791,21 +810,21 @@ Tone guidelines:
                             </svg>
                             Back
                         </button>
-                        <h2 class="text-xl font-bold">Simplify Complex Sentences</h2>
+                        <h2 class="text-2xl font-serif font-bold">Simplify Complex Sentences</h2>
                     </div>
-                    <p class="mb-6">Use these prompts to break down lengthy, intricate sentences while maintaining meaning:</p>
+                    <p class="mb-6 text-accent dark:text-neutral-200">Use these prompts to break down lengthy, intricate sentences while maintaining meaning:</p>
 
-                    <!-- Prompt 1 -->
-                    <div class="prompt-container relative mb-8">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-semibold text-lg">Sentence Structure Simplification</h3>
+                    <!-- Prompt -->
+                    <div class="prompt-container relative mb-10">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="font-serif font-semibold text-lg text-primary dark:text-secondary">Sentence Structure Simplification</h3>
                             <span class="tier-badge tier-2">Tier 2: Ethically Contingent</span>
                         </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">
+                        <p class="text-sm text-accent dark:text-neutral-300 mb-4 leading-relaxed">
                             This prompt helps restructure complex sentences into more accessible formats while preserving technical content. <strong>Review the output</strong> to ensure no meaning is lost in the simplification process.
                         </p>
                         <div class="prompt-box relative">
-                            <pre class="whitespace-pre-wrap text-sm">Simplify the sentence structure in this academic text while preserving all technical content and meaning:
+                            <pre class="whitespace-pre-wrap text-sm text-accent dark:text-neutral-200">Simplify the sentence structure in this academic text while preserving all technical content and meaning:
 
 [Your academic text here]
 
@@ -821,15 +840,43 @@ Focus particularly on sentences with:
 - Extended parenthetical phrases
 - Excessive use of semicolons
 - Nested or stacked modifiers</pre>
-                            <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">Copy</button>
+                            <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <!-- Example Toggle Button -->
+                        <button class="example-toggle mt-4 text-sm text-primary dark:text-secondary transition-colors flex items-center cursor-pointer" onclick="toggleExample('simplify-example')">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                            <span>Show Example</span>
+                        </button>
+                        
+                        <!-- Hidden Example -->
+                        <div id="simplify-example" class="example-content hidden mt-4">
+                            <h4 class="text-sm font-medium text-primary dark:text-secondary mb-2">Example:</h4>
+                            <pre class="whitespace-pre-wrap text-xs text-accent dark:text-neutral-200">Simplify the sentence structure in this academic text while preserving all technical content and meaning:
+
+The contemporary manifestation of the Sinterklaasfeest, notwithstanding its ostensible continuity with historical Dutch cultural practices that can be traced to the medieval veneration of St. Nicholas of Myra, whose feast day on December 6th provides the calendrical basis for the celebration, has undergone significant transformations in its symbolic content and material practices, particularly with respect to the controversial figure of Zwarte Piet, whose representation has been contested and renegotiated in recent decades within the context of postcolonial critiques and multicultural discourse that have prompted various municipalities, educational institutions, and media organizations to implement modifications to the traditional blackface portrayal, while simultaneously eliciting resistance from those who perceive such changes as an unwarranted concession to political correctness that threatens to undermine the integrity of Dutch cultural heritage.</pre>
+                        </div>
+                        
+                        <!-- Cherry blossom decoration -->
+                        <div class="flex justify-end mt-2">
+                            <span class="text-secondary text-xs opacity-50">● ● ●</span>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Remove Redundancy Section -->
+            <!-- Remaining prompt sections follow the same pattern... -->
+            <!-- I'll include just a couple more section examples to save space -->
+
+            <!-- 6. Remove Redundancy -->
             <section id="remove-redundancy" class="py-4 hidden">
-                <div class="bg-white dark:bg-neutral-800 rounded-xl p-6 shadow-md">
+                <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 shadow-sm border border-neutral-300 dark:border-neutral-700">
                     <div class="flex items-center mb-6">
                         <button class="back-button mr-4" onclick="showCategory('improve')">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -837,21 +884,21 @@ Focus particularly on sentences with:
                             </svg>
                             Back
                         </button>
-                        <h2 class="text-xl font-bold">Remove Redundancy</h2>
+                        <h2 class="text-2xl font-serif font-bold">Remove Redundancy</h2>
                     </div>
-                    <p class="mb-6">Use these prompts to identify and eliminate repetitive elements in your academic writing:</p>
+                    <p class="mb-6 text-accent dark:text-neutral-200">Use these prompts to identify and eliminate repetitive elements in your writing:</p>
 
-                    <!-- Prompt 1 -->
-                    <div class="prompt-container relative mb-8">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-semibold text-lg">Redundancy Identification and Elimination</h3>
+                    <!-- Prompt -->
+                    <div class="prompt-container relative mb-10">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="font-serif font-semibold text-lg text-primary dark:text-secondary">Redundancy Identification and Elimination</h3>
                             <span class="tier-badge tier-2">Tier 2: Ethically Contingent</span>
                         </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">
+                        <p class="text-sm text-accent dark:text-neutral-300 mb-4 leading-relaxed">
                             This prompt helps identify different types of redundancies in your writing. <strong>Review the suggested changes</strong> to ensure important distinctions aren't lost during editing.
                         </p>
                         <div class="prompt-box relative">
-                            <pre class="whitespace-pre-wrap text-sm">Identify and eliminate redundant elements in this academic text while preserving all essential content:
+                            <pre class="whitespace-pre-wrap text-sm text-accent dark:text-neutral-200">Identify and eliminate redundant elements in this academic text while preserving all essential content:
 
 [Your academic text here]
 
@@ -866,15 +913,110 @@ Provide:
 - A revised version with redundancies eliminated
 - A brief explanation of what you removed and why
 - Confirmation that all essential academic content and technical terminology remains intact</pre>
-                            <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">Copy</button>
+                            <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <!-- Example Toggle Button -->
+                        <button class="example-toggle mt-4 text-sm text-primary dark:text-secondary transition-colors flex items-center cursor-pointer" onclick="toggleExample('redundancy-example')">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                            <span>Show Example</span>
+                        </button>
+                        
+                        <!-- Hidden Example -->
+                        <div id="redundancy-example" class="example-content hidden mt-4">
+                            <h4 class="text-sm font-medium text-primary dark:text-secondary mb-2">Example:</h4>
+                            <pre class="whitespace-pre-wrap text-xs text-accent dark:text-neutral-200">Identify and eliminate redundant elements in this academic text while preserving all essential content:
+
+The Dutch celebration of King's Day, also known as Koningsdag in the Dutch language, is a national holiday that takes place annually every year on April 27th to commemorate and celebrate the birth of King Willem-Alexander of the Netherlands. This celebratory festivity, which is celebrated throughout the entire country of the Netherlands, features vibrant orange-colored decorations, clothing, and accessories, with orange being the color symbolically representing and signifying the Dutch royal family, which is known as the House of Orange-Nassau. During this festive celebration, numerous cities and towns across the Netherlands organize and arrange outdoor festivals, concerts, and street markets where citizens and visitors alike can sell their used or secondhand items, creating what the Dutch refer to as a "vrijmarkt" or free market. Additionally, many celebratory festivities also take place on the canals of Amsterdam, where numerous boats full of celebrating people sail through the historic waterways while playing music and engaging in festivities.</pre>
+                        </div>
+                        
+                        <!-- Cherry blossom decoration -->
+                        <div class="flex justify-end mt-2">
+                            <span class="text-secondary text-xs opacity-50">● ● ●</span>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Transition Sentence Section -->
-            <section id="transition-sentence" class="py-4 hidden">
-                <div class="bg-white dark:bg-neutral-800 rounded-xl p-6 shadow-md">
+            <!-- 7. Check Grammar/Spelling -->
+            <section id="check-grammar" class="py-4 hidden">
+                <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 shadow-sm border border-neutral-300 dark:border-neutral-700">
+                    <div class="flex items-center mb-6">
+                        <button class="back-button mr-4" onclick="showCategory('improve')">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                            </svg>
+                            Back
+                        </button>
+                        <h2 class="text-2xl font-serif font-bold">Check Grammar/Spelling</h2>
+                    </div>
+                    <p class="mb-6 text-accent dark:text-neutral-200">Use these prompts to identify and correct grammatical and spelling errors in your academic writing:</p>
+
+                    <!-- Prompt -->
+                    <div class="prompt-container relative mb-10">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="font-serif font-semibold text-lg text-primary dark:text-secondary">Academic Proofreading</h3>
+                            <span class="tier-badge tier-1">Tier 1: Ethically Acceptable</span>
+                        </div>
+                        <p class="text-sm text-accent dark:text-neutral-300 mb-4 leading-relaxed">
+                            This prompt provides a thorough check of grammar, spelling, and punctuation while preserving all content and meaning.
+                        </p>
+                        <div class="prompt-box relative">
+                            <pre class="whitespace-pre-wrap text-sm text-accent dark:text-neutral-200">Proofread this academic text for grammar, spelling, and punctuation errors only. Do not alter content, meaning, or writing style:
+
+[Your academic text here]
+
+Please:
+1. Correct all mechanical errors (spelling, grammar, punctuation)
+2. Pay special attention to subject-verb agreement, verb tense consistency, and proper article usage
+3. Preserve all technical terminology exactly as written
+4. Maintain all citations in their original format
+5. Format your response with:
+   a) The corrected version
+   b) A list of corrections made with brief explanations
+
+For discipline-specific conventions, I am writing in [specify field, e.g., "linguistics," "computer science"] following [specify style, e.g., "APA," "Chicago"].</pre>
+                            <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <!-- Example Toggle Button -->
+                        <button class="example-toggle mt-4 text-sm text-primary dark:text-secondary transition-colors flex items-center cursor-pointer" onclick="toggleExample('grammar-example')">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                            <span>Show Example</span>
+                        </button>
+                        
+                        <!-- Hidden Example -->
+                        <div id="grammar-example" class="example-content hidden mt-4">
+                            <h4 class="text-sm font-medium text-primary dark:text-secondary mb-2">Example:</h4>
+                            <pre class="whitespace-pre-wrap text-xs text-accent dark:text-neutral-200">Proofread this academic text for grammar, spelling, and punctuation errors only. Do not alter content, meaning, or writing style:
+
+The Dutch new years celebration known as "Oud en Nieuw" (Old and New) combines several tradtional elements that make it distintive from other European celebrations. On December 31st, many Dutch families prepare "oliebollen," which are deep-fried doughnut-like pasties filled with raisins or currents and covered in powdered suger. As midnight approachs, people gather to watch the countdown and at exactly twelve o'clock, fireworks are lit througout neighborhoods accross the country, creating a spectacular display that can last for upto an hour. The following morning, on Januery 1st, a common tradition in some dutch coastal towns is the "Nieuwjaarsduik," or New Years dive, where participents plunge into the cold North Sea. This practice, believed to bring good fortune, attracts thousands of swimmers each year despite the frigid tempertures which often hovers around 5 degree Celsius.
+
+For discipline-specific conventions, I am writing in cultural anthropology following Chicago style.</pre>
+                        </div>
+                        
+                        <!-- Cherry blossom decoration -->
+                        <div class="flex justify-end mt-2">
+                            <span class="text-secondary text-xs opacity-50">● ● ●</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- 8. Generate Starting Sentence -->
+            <section id="starting-sentence" class="py-4 hidden">
+                <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 shadow-sm border border-neutral-300 dark:border-neutral-700">
                     <div class="flex items-center mb-6">
                         <button class="back-button mr-4" onclick="showCategory('drafting')">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -882,21 +1024,95 @@ Provide:
                             </svg>
                             Back
                         </button>
-                        <h2 class="text-xl font-bold">Suggest Transition Sentence</h2>
+                        <h2 class="text-2xl font-serif font-bold">Generate Starting Sentence</h2>
                     </div>
-                    <p class="mb-6">Use these prompts to develop smooth connections between ideas or paragraphs:</p>
+                    <p class="mb-6 text-accent dark:text-neutral-200">Use these prompts to create strong opening sentences for paragraphs or sections:</p>
 
-                    <!-- Prompt 1 -->
-                    <div class="prompt-container relative mb-8">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-semibold text-lg">Context-Based Transition Generator</h3>
+                    <!-- Prompt -->
+                    <div class="prompt-container relative mb-10">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="font-serif font-semibold text-lg text-primary dark:text-secondary">Context-Aware Topic Sentence</h3>
                             <span class="tier-badge tier-2">Tier 2: Ethically Contingent</span>
                         </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">
+                        <p class="text-sm text-accent dark:text-neutral-300 mb-4 leading-relaxed">
+                            This prompt helps create effective topic sentences that introduce new paragraphs while maintaining flow from previous content. <strong>Choose the option that best matches your writing voice</strong> and modify as needed.
+                        </p>
+                        <div class="prompt-box relative">
+                            <pre class="whitespace-pre-wrap text-sm text-accent dark:text-neutral-200">Generate 3-4 alternative academic topic sentences for a paragraph that will discuss [specific aspect/concept]. The paragraph will follow this preceding content:
+
+[Previous paragraph or context]
+
+The new paragraph should:
+1. Clearly signal the shift to [the specific aspect/concept]
+2. Connect logically to the preceding content
+3. Use appropriate scholarly language for [your field/discipline]
+4. Set the stage for an in-depth discussion of [specific aspect/concept]
+
+Provide varied sentence structures and transition strategies with a brief explanation of how each option works.</pre>
+                            <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <!-- Example Toggle Button -->
+                        <button class="example-toggle mt-4 text-sm text-primary dark:text-secondary transition-colors flex items-center cursor-pointer" onclick="toggleExample('starting-example')">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                            <span>Show Example</span>
+                        </button>
+                        
+                        <!-- Hidden Example -->
+                        <div id="starting-example" class="example-content hidden mt-4">
+                            <h4 class="text-sm font-medium text-primary dark:text-secondary mb-2">Example:</h4>
+                            <pre class="whitespace-pre-wrap text-xs text-accent dark:text-neutral-200">Generate 3-4 alternative academic topic sentences for a paragraph that will discuss the evolution of St. Nicholas into the Dutch Sinterklaas figure. The paragraph will follow this preceding content:
+
+The celebration of Sinterklaas on December 5th remains the most important Dutch gift-giving holiday, despite increasing influence from Christmas traditions. This holiday centers around a character whose origins lie in religious history, though the modern celebration has largely secularized.
+
+The new paragraph should:
+1. Clearly signal the shift to the historical evolution of the Sinterklaas figure
+2. Connect logically to the preceding content about the holiday's importance
+3. Use appropriate scholarly language for cultural history
+4. Set the stage for an in-depth discussion of how St. Nicholas transformed into Sinterklaas
+
+Provide varied sentence structures and transition strategies with a brief explanation of how each option works.</pre>
+                        </div>
+                        
+                        <!-- Cherry blossom decoration -->
+                        <div class="flex justify-end mt-2">
+                            <span class="text-secondary text-xs opacity-50">● ● ●</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 9. Suggest Transition Sentence -->
+            <section id="transition-sentence" class="py-4 hidden">
+                <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 shadow-sm border border-neutral-300 dark:border-neutral-700">
+                    <div class="flex items-center mb-6">
+                        <button class="back-button mr-4" onclick="showCategory('drafting')">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                            </svg>
+                            Back
+                        </button>
+                        <h2 class="text-2xl font-serif font-bold">Suggest Transition Sentence</h2>
+                    </div>
+                    <p class="mb-6 text-accent dark:text-neutral-200">Use these prompts to develop smooth connections between ideas or paragraphs:</p>
+
+                    <!-- Prompt -->
+                    <div class="prompt-container relative mb-10">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="font-serif font-semibold text-lg text-primary dark:text-secondary">Context-Based Transition Generator</h3>
+                            <span class="tier-badge tier-2">Tier 2: Ethically Contingent</span>
+                        </div>
+                        <p class="text-sm text-accent dark:text-neutral-300 mb-4 leading-relaxed">
                             This prompt helps create appropriate transitions based on the specific content being connected. <strong>You must provide both paragraphs</strong> to get meaningful and contextually appropriate transitions.
                         </p>
                         <div class="prompt-box relative">
-                            <pre class="whitespace-pre-wrap text-sm">Generate 3-4 alternative academic transition sentences to connect these two paragraphs while maintaining scholarly tone:
+                            <pre class="whitespace-pre-wrap text-sm text-accent dark:text-neutral-200">Generate 3-4 alternative academic transition sentences to connect these two paragraphs while maintaining scholarly tone:
 
 First paragraph:
 [Content of first paragraph]
@@ -911,15 +1127,52 @@ For each alternative transition:
 2. Use academic language appropriate for [your field or discipline]
 3. Briefly explain how the transition works logically
 4. Vary the transition strategies (e.g., use of conjunctive adverbs, reference to preceding ideas, etc.)</pre>
-                            <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">Copy</button>
+                            <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <!-- Example Toggle Button -->
+                        <button class="example-toggle mt-4 text-sm text-primary dark:text-secondary transition-colors flex items-center cursor-pointer" onclick="toggleExample('transition-example')">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                            <span>Show Example</span>
+                        </button>
+                        
+                        <!-- Hidden Example -->
+                        <div id="transition-example" class="example-content hidden mt-4">
+                            <h4 class="text-sm font-medium text-primary dark:text-secondary mb-2">Example:</h4>
+                            <pre class="whitespace-pre-wrap text-xs text-accent dark:text-neutral-200">Generate 3-4 alternative academic transition sentences to connect these two paragraphs while maintaining scholarly tone:
+
+First paragraph:
+The Sinterklaas celebration includes several distinctive food traditions that differentiate it from other Dutch holidays. Chief among these are the kruidnoten and pepernoten, small spiced cookies that are often scattered or thrown by Zwarte Piet characters as they accompany Sinterklaas through towns and cities. Additionally, chocolate letters corresponding to recipients' initials are popular gifts, particularly for children.
+
+Second paragraph:
+The tradition of leaving carrots and hay in shoes for Sinterklaas's horse dates back several centuries. Historical records from the 17th century mention children placing food in shoes or clogs, with the expectation of receiving small gifts in return. This practice created an interactive element to the celebration, allowing children to feel personally connected to the mythical figure.
+
+The logical relationship between these paragraphs is: transition from food consumed by humans to food left for the Sinterklaas horse, both being central to the tradition's material culture.
+
+For each alternative transition:
+1. Create a sentence that clearly connects the key ideas from both paragraphs
+2. Use academic language appropriate for cultural anthropology
+3. Briefly explain how the transition works logically
+4. Vary the transition strategies (e.g., use of conjunctive adverbs, reference to preceding ideas, etc.)</pre>
+                        </div>
+                        
+                        <!-- Cherry blossom decoration -->
+                        <div class="flex justify-end mt-2">
+                            <span class="text-secondary text-xs opacity-50">● ● ●</span>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Concluding Sentence Section -->
+            <!-- 10. Draft Concluding Sentence -->
             <section id="concluding-sentence" class="py-4 hidden">
-                <div class="bg-white dark:bg-neutral-800 rounded-xl p-6 shadow-md">
+                <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 shadow-sm border border-neutral-300 dark:border-neutral-700">
                     <div class="flex items-center mb-6">
                         <button class="back-button mr-4" onclick="showCategory('drafting')">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -927,21 +1180,21 @@ For each alternative transition:
                             </svg>
                             Back
                         </button>
-                        <h2 class="text-xl font-bold">Draft Concluding Sentence</h2>
+                        <h2 class="text-2xl font-serif font-bold">Draft Concluding Sentence</h2>
                     </div>
-                    <p class="mb-6">Use these prompts to create effective paragraph or section closures:</p>
+                    <p class="mb-6 text-accent dark:text-neutral-200">Use these prompts to create effective paragraph or section closures:</p>
 
-                    <!-- Prompt 1 -->
-                    <div class="prompt-container relative mb-8">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-semibold text-lg">Paragraph Conclusion Generator</h3>
+                    <!-- Prompt -->
+                    <div class="prompt-container relative mb-10">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="font-serif font-semibold text-lg text-primary dark:text-secondary">Paragraph Conclusion Generator</h3>
                             <span class="tier-badge tier-2">Tier 2: Ethically Contingent</span>
                         </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">
+                        <p class="text-sm text-accent dark:text-neutral-300 mb-4 leading-relaxed">
                             This prompt helps create effective concluding sentences that reinforce key paragraph points. <strong>You must provide the full paragraph</strong> for appropriate context.
                         </p>
                         <div class="prompt-box relative">
-                            <pre class="whitespace-pre-wrap text-sm">Generate 3 alternative academic concluding sentences for this paragraph that effectively synthesize its main point:
+                            <pre class="whitespace-pre-wrap text-sm text-accent dark:text-neutral-200">Generate 3 alternative academic concluding sentences for this paragraph that effectively synthesize its main point:
 
 [Your paragraph text]
 
@@ -952,15 +1205,40 @@ Please provide concluding sentences that:
 4. Optional: hint at implications or connection to the next topic if appropriate
 
 For each option, briefly note what conclusion strategy it employs (e.g., synthesis, implication, reinforcement, future direction).</pre>
-                            <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">Copy</button>
+                            <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <!-- Example Toggle Button -->
+                        <button class="example-toggle mt-4 text-sm text-primary dark:text-secondary transition-colors flex items-center cursor-pointer" onclick="toggleExample('concluding-example')">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                            <span>Show Example</span>
+                        </button>
+                        
+                        <!-- Hidden Example -->
+                        <div id="concluding-example" class="example-content hidden mt-4">
+                            <h4 class="text-sm font-medium text-primary dark:text-secondary mb-2">Example:</h4>
+                            <pre class="whitespace-pre-wrap text-xs text-accent dark:text-neutral-200">Generate 3 alternative academic concluding sentences for this paragraph that effectively synthesize its main point:
+
+The transformation of the Zwarte Piet character in Dutch Sinterklaas celebrations demonstrates how traditional cultural practices evolve in response to changing social attitudes. Historically portrayed as a Moorish servant with blackface makeup, red lips, and gold earrings, this controversial figure has undergone significant modifications in recent decades. Many contemporary celebrations now feature "Sooty Piets" with smudges of soot rather than full blackface, multicolored Piets, or rainbow Piets that eliminate racial characteristics entirely. These adaptations reflect ongoing negotiations between preserving cultural heritage and addressing concerns about racial stereotyping in the Netherlands' increasingly multicultural society.</pre>
+                        </div>
+                        
+                        <!-- Cherry blossom decoration -->
+                        <div class="flex justify-end mt-2">
+                            <span class="text-secondary text-xs opacity-50">● ● ●</span>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Expand on Keywords Section -->
+            <!-- 11. Expand on Keywords/Notes -->
             <section id="expand-keywords" class="py-4 hidden">
-                <div class="bg-white dark:bg-neutral-800 rounded-xl p-6 shadow-md">
+                <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 shadow-sm border border-neutral-300 dark:border-neutral-700">
                     <div class="flex items-center mb-6">
                         <button class="back-button mr-4" onclick="showCategory('drafting')">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -968,21 +1246,21 @@ For each option, briefly note what conclusion strategy it employs (e.g., synthes
                             </svg>
                             Back
                         </button>
-                        <h2 class="text-xl font-bold">Expand on Keywords/Notes</h2>
+                        <h2 class="text-2xl font-serif font-bold">Expand on Keywords/Notes</h2>
                     </div>
-                    <p class="mb-6">Use these prompts to develop complete sentences from notes or bullet points:</p>
+                    <p class="mb-6 text-accent dark:text-neutral-200">Use these prompts to develop complete sentences from notes or bullet points:</p>
 
-                    <!-- Prompt 1 -->
-                    <div class="prompt-container relative mb-8">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-semibold text-lg">Notes-to-Paragraph Conversion</h3>
+                    <!-- Prompt -->
+                    <div class="prompt-container relative mb-10">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="font-serif font-semibold text-lg text-primary dark:text-secondary">Notes-to-Paragraph Conversion</h3>
                             <span class="tier-badge tier-2">Tier 2: Ethically Contingent</span>
                         </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">
+                        <p class="text-sm text-accent dark:text-neutral-300 mb-4 leading-relaxed">
                             This prompt transforms your notes or bullet points into well-formed academic paragraphs. <strong>You must provide substantial notes</strong> that include the key concepts and relationships.
                         </p>
                         <div class="prompt-box relative">
-                            <pre class="whitespace-pre-wrap text-sm">Transform these academic notes/bullet points into a well-structured paragraph suitable for [document type] in [field or discipline]:
+                            <pre class="whitespace-pre-wrap text-sm text-accent dark:text-neutral-200">Transform these academic notes/bullet points into a well-structured paragraph suitable for [document type] in [field or discipline]:
 
 [Your bullet points or notes]
 
@@ -994,160 +1272,525 @@ Please:
 5. Expand on the notes where needed for clarity, but preserve the original meaning
 
 The target audience is [specify audience, e.g., "undergraduate students," "peer researchers"] and the paragraph should be approximately [X] sentences long.</pre>
-                            <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">Copy</button>
+                            <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <!-- Example Toggle Button -->
+                        <button class="example-toggle mt-4 text-sm text-primary dark:text-secondary transition-colors flex items-center cursor-pointer" onclick="toggleExample('keywords-example')">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                            <span>Show Example</span>
+                        </button>
+                        
+                        <!-- Hidden Example -->
+                        <div id="keywords-example" class="example-content hidden mt-4">
+                            <h4 class="text-sm font-medium text-primary dark:text-secondary mb-2">Example:</h4>
+                            <pre class="whitespace-pre-wrap text-xs text-accent dark:text-neutral-200">Transform these academic notes/bullet points into a well-structured paragraph suitable for a cultural anthropology journal article:
+
+- Dutch Sinterklaasavond (Dec 5) vs. Christmas (Dec 25)
+- Separate celebrations despite proximity
+- Gift-giving traditions differ – Sinterklaas: poems, surprises, creative packaging
+- Christmas more religious/family-oriented, less presents-focused for Dutch
+- Increasing American/global Christmas influence (Santa Claus = "Kerstman")
+- Cultural adaptation – maintain both traditions with distinct purposes
+- Some families now split gifts between both holidays
+
+The target audience is anthropology scholars and the paragraph should be approximately 8-10 sentences long.</pre>
+                        </div>
+                        
+                        <!-- Cherry blossom decoration -->
+                        <div class="flex justify-end mt-2">
+                            <span class="text-secondary text-xs opacity-50">● ● ●</span>
                         </div>
                     </div>
                 </div>
             </section>
-        </main>
 
-        <!-- Footer Section -->
-        <!-- References Section -->
-                    <div class="mt-8 p-4 bg-gray-50 dark:bg-neutral-700 rounded-lg">
-                        <h3 class="text-lg font-semibold mb-3">References</h3>
-                        <ul class="text-sm space-y-2">
-                            <li>Cheng, A., Calhoun, A., &amp; Reedy, G. (2025). Artificial intelligence-assisted academic writing: recommendations for ethical use. <em>Advances in Simulation, 10</em>(1), 22. https://doi.org/10.1186/s41077-025-00350-6</li>
-                            <li>Oliveira, M. B. (2025). CARe framework for responsible academic writing assisted by Generative AI. <em>SEFI Summer School</em>.</li>
-                        </ul>
+            <!-- 12. Rewrite in My Style -->
+            <section id="rewrite-style" class="py-4 hidden">
+                <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 shadow-sm border border-neutral-300 dark:border-neutral-700">
+                    <div class="flex items-center mb-6">
+                        <button class="back-button mr-4" onclick="showCategory('voice')">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                            </svg>
+                            Back
+                        </button>
+                        <h2 class="text-2xl font-serif font-bold">Rewrite in My Style</h2>
+                    </div>
+                    <p class="mb-6 text-accent dark:text-neutral-200">Use these prompts to maintain your authentic voice in generated or revised text:</p>
+
+                    <!-- Prompt -->
+                    <div class="prompt-container relative mb-10">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="font-serif font-semibold text-lg text-primary dark:text-secondary">Authorial Voice Preservation</h3>
+                            <span class="tier-badge tier-2">Tier 2: Ethically Contingent</span>
+                        </div>
+                        <p class="text-sm text-accent dark:text-neutral-300 mb-4 leading-relaxed">
+                            This prompt helps ensure AI-assisted content matches your personal writing style. <strong>Provide substantial samples</strong> of your own writing for the most accurate style matching.
+                        </p>
+                        <div class="prompt-box relative">
+                            <pre class="whitespace-pre-wrap text-sm text-accent dark:text-neutral-200">Analyze these samples of my academic writing, then rewrite the target text to match my style while preserving all content:
+
+MY WRITING SAMPLES:
+[Paste 2-3 paragraphs of your own academic writing here]
+
+TEXT TO REWRITE IN MY STYLE:
+[Paste text you want rewritten here]
+
+Please:
+1. First identify the key characteristics of my writing style (sentence structure, vocabulary level, paragraph organization, tone, etc.)
+2. Rewrite the target text to match these characteristics while preserving all content and meaning
+3. Maintain all technical terms, citations, and scholarly precision
+4. Explain which specific stylistic changes you made
+
+The goal is for the rewritten text to sound authentically like my own writing.</pre>
+                            <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <!-- Example Toggle Button -->
+                        <button class="example-toggle mt-4 text-sm text-primary dark:text-secondary transition-colors flex items-center cursor-pointer" onclick="toggleExample('style-example')">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                            <span>Show Example</span>
+                        </button>
+                        
+                        <!-- Hidden Example -->
+                        <div id="style-example" class="example-content hidden mt-4">
+                            <h4 class="text-sm font-medium text-primary dark:text-secondary mb-2">Example:</h4>
+                            <pre class="whitespace-pre-wrap text-xs text-accent dark:text-neutral-200">Analyze these samples of my academic writing, then rewrite the target text to match my style while preserving all content:
+
+MY WRITING SAMPLES:
+Dutch cultural traditions demonstrate remarkable resilience and adaptability in the face of modernization and globalization pressures. My research reveals how locals actively negotiate between preserving heritage practices and incorporating contemporary elements. When examining traditional festivals like Sinterklaas, we notice the interplay between commercial incentives and cultural authenticity concerns. I argue that these festivities serve as crucial sites for negotiating Dutch identity in an increasingly multicultural Europe.
+
+The historical evolution of these celebrations presents compelling evidence for cultural dynamism rather than stagnation. Throughout my fieldwork in Utrecht and Amsterdam, participants consistently emphasized the importance of continuity while acknowledging the necessity of adaptation. This apparent contradiction resolved itself through careful, community-based modifications to problematic elements while maintaining core symbolic structures and practices.
+
+TEXT TO REWRITE IN MY STYLE:
+The Dutch celebration of King's Day represents a nationalistic expression through festive practices. Participants engage in the tradition of wearing orange clothing, a color symbolizing the royal House of Orange-Nassau. This celebration includes multiple community-based activities including markets where citizens sell used goods, concerts in public spaces, and boat parades on Amsterdam's canals. The consumption of traditional foods and beverages further reinforces the connection to Dutch cultural identity.</pre>
+                        </div>
+                        
+                        <!-- Cherry blossom decoration -->
+                        <div class="flex justify-end mt-2">
+                            <span class="text-secondary text-xs opacity-50">● ● ●</span>
+                        </div>
                     </div>
                 </div>
-            
-        <footer class="mt-10 text-center text-gray-500 dark:text-gray-400 text-sm">
-            <p>CARefully prompt your AI: The Articulate Stage of Academic Writing</p>
-            <p class="mt-1">A resource for PhD students and academic instructors</p>
-            <p class="mt-1">Based on the CARe framework (Oliveira, 2025) and ethical tiers (Cheng et al., 2025)</p>
-        </footer>
-    
+            </section>
 
-    <!-- Floating Tier Info Button -->
-    <div class="fixed bottom-4 right-4 z-50">
-        <button id="tierInfoButton" class="bg-primary hover:bg-secondary text-white p-3 rounded-full shadow-lg flex items-center justify-center transition-all">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-            </svg>
-        </button>
-    </div>
-    
-    <!-- Tier Info Modal -->
-    <div id="tierInfoModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
-        <div class="bg-white dark:bg-neutral-800 rounded-xl p-6 max-w-md mx-4 shadow-xl">
-            <div class="flex justify-between items-start mb-4">
-                <h3 class="text-lg font-bold">Ethical Tier System</h3>
-                <button id="closeTierModal" class="text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-100">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                </button>
-            </div>
-            
-            <div class="space-y-4">
-                <div class="flex items-start gap-2">
-                    <span class="tier-badge tier-1 mt-1">Tier 1</span>
-                    <div>
-                        <h4 class="font-bold">Ethically Acceptable</h4>
-                        <p class="text-sm">Tasks like grammar checking, spelling correction, readability improvements, and basic language translation of existing text.</p>
+            <!-- 13. Suggest Alternatives While Keeping Key Terms -->
+            <section id="suggest-alternatives" class="py-4 hidden">
+                <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 shadow-sm border border-neutral-300 dark:border-neutral-700">
+                    <div class="flex items-center mb-6">
+                        <button class="back-button mr-4" onclick="showCategory('voice')">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                            </svg>
+                            Back
+                        </button>
+                        <h2 class="text-2xl font-serif font-bold">Suggest Alternatives While Keeping Key Terms</h2>
                     </div>
-                </div>
-                
-                <div class="flex items-start gap-2">
-                    <span class="tier-badge tier-2 mt-1">Tier 2</span>
-                    <div>
-                        <h4 class="font-bold">Ethically Contingent</h4>
-                        <p class="text-sm">Tasks like generating drafts based on significant user input, summarizing user-provided content, improving clarity, brainstorming ideas, rephrasing, or adjusting tone. <strong>Requires careful human oversight.</strong></p>
-                    </div>
-                </div>
-                
-                <div class="flex items-start gap-2">
-                    <span class="tier-badge tier-3 mt-1">Tier 3</span>
-                    <div>
-                        <h4 class="font-bold">Ethically Suspect/Not Recommended</h4>
-                        <p class="text-sm">Tasks involving drafting entirely new text with minimal user input or developing entirely new concepts. Most prompts in this library avoid this tier.</p>
-                    </div>
-                </div>
-                
-                <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">Based on Cheng et al., 2025</p>
-            </div>
-        </div>
-    </div>
+                    <p class="mb-6 text-accent dark:text-neutral-200">Use these prompts to rework phrasing while preserving critical terminology:</p>
 
-    <!-- JavaScript for Navigation and Interactions -->
-    <script>
-        // Show/Hide functions for navigation
-        function showIntroduction() {
-            hideAllSections();
-            document.getElementById('introduction').classList.remove('hidden');
-        }
+                    <!-- Prompt -->
+                    <div class="prompt-container relative mb-10">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="font-serif font-semibold text-lg text-primary dark:text-secondary">Terminology-Preserving Rephrase</h3>
+                            <span class="tier-badge tier-2">Tier 2: Ethically Contingent</span>
+                        </div>
+                        <p class="text-sm text-accent dark:text-neutral-300 mb-4 leading-relaxed">
+                            This prompt provides alternative phrasings while protecting essential terminology. <strong>You must clearly specify</strong> which terms must be preserved, and verify that they remain intact in the suggested alternatives.
+                        </p>
+                        <div class="prompt-box relative">
+                            <pre class="whitespace-pre-wrap text-sm text-accent dark:text-neutral-200">Suggest 2-3 alternative phrasings for this academic text while preserving these exact key terms and concepts:
 
-        function showCategory(categoryId) {
-            hideAllSections();
-            document.getElementById(categoryId).classList.remove('hidden');
-        }
+KEY TERMS TO PRESERVE EXACTLY:
+[List the specific technical terms, phrases, or concepts that must remain unchanged]
 
-        function showTask(taskId) {
-            hideAllSections();
-            document.getElementById(taskId).classList.remove('hidden');
-        }
+TEXT TO REPHRASE:
+[Your academic text]
 
-        function hideAllSections() {
-            // Hide all sections
-            const sections = document.querySelectorAll('main section');
-            sections.forEach(section => {
-                section.classList.add('hidden');
-            });
-        }
+Please provide:
+1. Alternative phrasings that vary the sentence structure and non-technical language
+2. Brief notes on how each alternative shifts the emphasis or tone
+3. Confirmation that all key technical terms are preserved exactly as listed
 
-        // Copy to clipboard function
-        function copyToClipboard(text) {
-            // Remove extra whitespace
-            text = text.trim();
-            
-            navigator.clipboard.writeText(text).then(() => {
-                // Show temporary notification
-                const notification = document.createElement('div');
-                notification.textContent = 'Copied to clipboard!';
-                notification.className = 'fixed bottom-4 left-4 bg-primary text-white px-4 py-2 rounded-md shadow-lg';
-                document.body.appendChild(notification);
-                
-                // Remove notification after 2 seconds
-                setTimeout(() => {
-                    notification.remove();
-                }, 2000);
-            }).catch(err => {
-                console.error('Failed to copy: ', err);
-            });
-        }
-        
-        // Tier Info Modal Functions
-        document.addEventListener('DOMContentLoaded', function() {
-            const tierInfoButton = document.getElementById('tierInfoButton');
-            const tierInfoModal = document.getElementById('tierInfoModal');
-            const closeTierModal = document.getElementById('closeTierModal');
-            
-            // Open modal when info button is clicked
-            tierInfoButton.addEventListener('click', function() {
-                tierInfoModal.classList.remove('hidden');
-            });
-            
-            // Close modal when close button is clicked
-            closeTierModal.addEventListener('click', function() {
-                tierInfoModal.classList.add('hidden');
-            });
-            
-            // Close modal when clicking outside of it
-            tierInfoModal.addEventListener('click', function(e) {
-                if (e.target === tierInfoModal) {
-                    tierInfoModal.classList.add('hidden');
-                }
-            });
-            
-            // Close modal with Escape key
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && !tierInfoModal.classList.contains('hidden')) {
-                    tierInfoModal.classList.add('hidden');
-                }
-            });
-        });
-    </script>
+The alternatives should maintain academic rigor and be suitable for [audience and context].</pre>
+                            <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">
+                               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                               </svg>
+                           </button>
+                       </div>
+                       
+                       <!-- Example Toggle Button -->
+                       <button class="example-toggle mt-4 text-sm text-primary dark:text-secondary transition-colors flex items-center cursor-pointer" onclick="toggleExample('alternatives-example')">
+                           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                           </svg>
+                           <span>Show Example</span>
+                       </button>
+                       
+                       <!-- Hidden Example -->
+                       <div id="alternatives-example" class="example-content hidden mt-4">
+                           <h4 class="text-sm font-medium text-primary dark:text-secondary mb-2">Example:</h4>
+                           <pre class="whitespace-pre-wrap text-xs text-accent dark:text-neutral-200">Suggest 2-3 alternative phrasings for this academic text while preserving these exact key terms and concepts:
 
+KEY TERMS TO PRESERVE EXACTLY:
+[Sinterklaasfeest, Zwarte Piet, koloniale geschiedenis, multiculturele samenleving, Nederlandse identiteit]
 
-</body></html>
+TEXT TO REPHRASE:
+De controverse rond Zwarte Piet tijdens het Sinterklaasfeest reflecteert bredere debatten over de koloniale geschiedenis en de uitdagingen van een multiculturele samenleving in Nederland. Voorstanders van het behoud van de traditionele Zwarte Piet benadrukken het belang van culturele continuïteit voor de Nederlandse identiteit, terwijl critici wijzen op de raciale stereotypering inherent aan het karakter.
+
+The alternatives should maintain academic rigor and be suitable for a cultural studies journal.</pre>
+                       </div>
+                       
+                       <!-- Cherry blossom decoration -->
+                       <div class="flex justify-end mt-2">
+                           <span class="text-secondary text-xs opacity-50">● ● ●</span>
+                       </div>
+                   </div>
+               </div>
+           </section>
+
+           <!-- 14. Avoid Generic AI Phrases -->
+           <section id="avoid-generic" class="py-4 hidden">
+               <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 shadow-sm border border-neutral-300 dark:border-neutral-700">
+                   <div class="flex items-center mb-6">
+                       <button class="back-button mr-4" onclick="showCategory('voice')">
+                           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                           </svg>
+                           Back
+                       </button>
+                       <h2 class="text-2xl font-serif font-bold">Avoid Generic AI Phrases</h2>
+                   </div>
+                   <p class="mb-6 text-accent dark:text-neutral-200">Use these prompts to eliminate formulaic expressions often found in AI-generated text:</p>
+
+                   <!-- Prompt -->
+                   <div class="prompt-container relative mb-10">
+                       <div class="flex justify-between items-start mb-3">
+                           <h3 class="font-serif font-semibold text-lg text-primary dark:text-secondary">AI Pattern Detection and Revision</h3>
+                           <span class="tier-badge tier-2">Tier 2: Ethically Contingent</span>
+                       </div>
+                       <p class="text-sm text-accent dark:text-neutral-300 mb-4 leading-relaxed">
+                           This prompt identifies and eliminates common AI writing patterns. <strong>Choose the revised versions that best match your authentic voice</strong> and modify as needed.
+                       </p>
+                       <div class="prompt-box relative">
+                           <pre class="whitespace-pre-wrap text-sm text-accent dark:text-neutral-200">Identify and eliminate any generic AI-like phrases or patterns in this academic text, replacing them with more authentic scholarly language:
+
+[Your academic text here]
+
+Please:
+1. Identify common AI patterns such as:
+  - Formulaic introductions or conclusions
+  - Overuse of phrases like "it is important to note," "it is worth mentioning," etc.
+  - Repetitive transition phrases
+  - Overly balanced sentence structures
+  - Predictable paragraph organization
+
+2. Replace identified patterns with more authentic academic alternatives
+
+3. Explain what you changed and why it improves authenticity
+
+The revised text should maintain all academic content while reading more like natural human scholarly writing.</pre>
+                           <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">
+                               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                               </svg>
+                           </button>
+                       </div>
+                       
+                       <!-- Example Toggle Button -->
+                       <button class="example-toggle mt-4 text-sm text-primary dark:text-secondary transition-colors flex items-center cursor-pointer" onclick="toggleExample('generic-example')">
+                           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                           </svg>
+                           <span>Show Example</span>
+                       </button>
+                       
+                       <!-- Hidden Example -->
+                       <div id="generic-example" class="example-content hidden mt-4">
+                           <h4 class="text-sm font-medium text-primary dark:text-secondary mb-2">Example:</h4>
+                           <pre class="whitespace-pre-wrap text-xs text-accent dark:text-neutral-200">Identify and eliminate any generic AI-like phrases or patterns in this academic text, replacing them with more authentic scholarly language:
+
+It is important to note that the Dutch celebration of Sinterklaas has undergone significant transformations over time. It is worth mentioning that while the basic elements remain consistent, certain aspects have evolved in response to cultural shifts. As we can observe, the figure of Zwarte Piet has been the subject of heated debate in recent years. It goes without saying that this controversy reveals deeper tensions in Dutch society regarding race and national identity. In examining this tradition, it becomes evident that there is a delicate balance between preserving cultural heritage and addressing contemporary ethical concerns. The significance of these debates cannot be overstated, as they highlight the complex interplay between tradition and social progress. Needless to say, the evolution of this celebration provides a fascinating case study of how cultural traditions adapt to changing societal norms. It should be emphasized that these changes reflect broader patterns of cultural negotiation in European societies grappling with colonial legacies.</pre>
+                       </div>
+                       
+                       <!-- Cherry blossom decoration -->
+                       <div class="flex justify-end mt-2">
+                           <span class="text-secondary text-xs opacity-50">● ● ●</span>
+                       </div>
+                   </div>
+               </div>
+           </section>
+       </main>
+
+       <!-- Dynamic Footer Content Sections -->
+       <!-- References Section (shown only on main page) -->
+       <div id="references-section" class="mt-10 p-6 bg-white dark:bg-neutral-800 rounded-xl shadow-sm border border-neutral-300 dark:border-neutral-700">
+           <h3 class="text-xl font-serif font-semibold mb-4 text-primary dark:text-secondary">References</h3>
+           <ul class="text-sm space-y-3 text-accent dark:text-neutral-200">
+               <li>Cheng, A., Calhoun, A., &amp; Reedy, G. (2025). Artificial intelligence-assisted academic writing: recommendations for ethical use. <em>Advances in Simulation, 10</em>(1), 22. https://doi.org/10.1186/s41077-025-00350-6</li>
+               <li>Oliveira, M. B. (2025). CARe framework for responsible academic writing assisted by Generative AI. <em>SEFI Summer School</em>.</li>
+           </ul>
+       </div>
+
+       <!-- Ethical Tier Summary Section (shown on category pages) -->
+       <div id="ethical-tier-summary" class="mt-10 p-6 bg-white dark:bg-neutral-800 rounded-xl shadow-sm border border-neutral-300 dark:border-neutral-700 hidden">
+           <h3 class="text-xl font-serif font-semibold mb-4 text-primary dark:text-secondary">Ethical Tier System</h3>
+           <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+               <div class="flex flex-col items-start">
+                   <span class="tier-badge tier-1 mb-2">Tier 1</span>
+                   <h4 class="font-bold text-primary dark:text-secondary text-sm">Ethically Acceptable</h4>
+                   <p class="text-xs text-accent dark:text-neutral-200 mt-1">Tasks like grammar checking, spelling correction, readability improvements.</p>
+               </div>
+               
+               <div class="flex flex-col items-start">
+                   <span class="tier-badge tier-2 mb-2">Tier 2</span>
+                   <h4 class="font-bold text-primary dark:text-secondary text-sm">Ethically Contingent</h4>
+                   <p class="text-xs text-accent dark:text-neutral-200 mt-1">Tasks requiring human oversight like improving clarity or generating drafts from significant input.</p>
+               </div>
+               
+               <div class="flex flex-col items-start">
+                   <span class="tier-badge tier-3 mb-2">Tier 3</span>
+                   <h4 class="font-bold text-primary dark:text-secondary text-sm">Ethically Suspect</h4>
+                   <p class="text-xs text-accent dark:text-neutral-200 mt-1">Tasks involving drafting entirely new text with minimal user input. Use with caution.</p>
+               </div>
+           </div>
+       </div>
+           
+       <!-- Footer Section -->
+       <footer class="mt-10 text-center text-accent dark:text-neutral-300 text-sm py-6 border-t border-neutral-300 dark:border-neutral-700">
+           <div class="flex justify-center space-x-1 mb-3 opacity-80">
+               <span class="text-secondary">●</span>
+               <span class="text-primary">●</span>
+               <span class="text-secondary">●</span>
+               <span class="text-primary">●</span>
+               <span class="text-secondary">●</span>
+           </div>
+           <p>CARefully prompt your AI</p>
+           <p class="mt-2">A resource for academic writers and writing instructors</p>
+           <p class="mt-2">Based on the CARe framework developed by Oliveira (2025) and the ethical tiers proposed by Cheng et al. (2025)</p>
+       </footer>
+   </div>
+
+   <!-- Floating Tier Info Button with improved hover effect -->
+   <div class="fixed bottom-4 right-4 z-40">
+       <button id="tierInfoButton" class="bg-primary hover:bg-secondary hover:text-accent text-white p-3 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 transform hover:scale-110">
+           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+           </svg>
+       </button>
+   </div>
+   
+   <!-- Tier Info Modal -->
+   <div id="tierInfoModal" class="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm z-50 flex items-center justify-center hidden">
+       <div class="bg-white dark:bg-neutral-800 rounded-xl p-6 max-w-md mx-4 shadow-xl border border-neutral-300 dark:border-neutral-700">
+           <div class="flex justify-between items-start mb-5">
+               <h3 class="text-xl font-serif font-bold text-primary dark:text-secondary">Ethical Tier System</h3>
+               <button id="closeTierModal" class="text-accent hover:text-primary dark:text-neutral-300 dark:hover:text-secondary transition-colors cursor-pointer">
+                   <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                   </svg>
+               </button>
+           </div>
+           
+           <div class="space-y-5">
+               <div class="flex items-start gap-3">
+                   <span class="tier-badge tier-1 mt-1">Tier 1</span>
+                   <div>
+                       <h4 class="font-bold text-primary dark:text-secondary">Ethically Acceptable</h4>
+                       <p class="text-sm mt-1 text-accent dark:text-neutral-200">Tasks like grammar checking, spelling correction, readability improvements, and basic language translation of existing text.</p>
+                   </div>
+               </div>
+               
+               <div class="flex items-start gap-3">
+                   <span class="tier-badge tier-2 mt-1">Tier 2</span>
+                   <div>
+                       <h4 class="font-bold text-primary dark:text-secondary">Ethically Contingent</h4>
+                       <p class="text-sm mt-1 text-accent dark:text-neutral-200">Tasks like generating drafts based on significant user input, summarizing user-provided content, improving clarity, brainstorming ideas, rephrasing, or adjusting tone. <strong>Requires careful human oversight.</strong></p>
+                   </div>
+               </div>
+               
+               <div class="flex items-start gap-3">
+                   <span class="tier-badge tier-3 mt-1">Tier 3</span>
+                   <div>
+                       <h4 class="font-bold text-primary dark:text-secondary">Ethically Suspect/Not Recommended</h4>
+                       <p class="text-sm mt-1 text-accent dark:text-neutral-200">Tasks involving drafting entirely new text with minimal user input or developing entirely new concepts. Most prompts in this library avoid this tier.</p>
+                   </div>
+               </div>
+               
+               <!-- Cherry blossom decoration -->
+               <div class="flex justify-center space-x-2 pt-3 opacity-70">
+                   <span class="text-secondary text-xs">●</span>
+                   <span class="text-primary text-xs">●</span>
+                   <span class="text-secondary text-xs">●</span>
+               </div>
+               
+               <p class="text-xs text-accent dark:text-neutral-400 text-center">Based on Cheng et al., 2025</p>
+           </div>
+       </div>
+   </div>
+
+   <!-- JavaScript for Navigation and Interactions -->
+   <script>
+       // Dark mode toggle functionality
+       document.addEventListener('DOMContentLoaded', function() {
+           const themeToggle = document.getElementById('themeToggle');
+           
+           themeToggle.addEventListener('click', function() {
+               document.documentElement.classList.toggle('dark');
+               const isDarkMode = document.documentElement.classList.contains('dark');
+               localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+               
+               // Add a subtle animation to the toggle button
+               themeToggle.classList.add('scale-110');
+               setTimeout(() => {
+                   themeToggle.classList.remove('scale-110');
+               }, 200);
+           });
+       });
+       
+       // Show/Hide functions for navigation with updated footer content toggling
+       function showIntroduction() {
+           hideAllSections();
+           document.getElementById('introduction').classList.remove('hidden');
+           
+           // Show references, hide ethical tier summary in footer
+           document.getElementById('references-section').classList.remove('hidden');
+           document.getElementById('ethical-tier-summary').classList.add('hidden');
+       }
+
+       function showCategory(categoryId) {
+           hideAllSections();
+           document.getElementById(categoryId).classList.remove('hidden');
+           
+           // Hide references, show ethical tier summary in footer
+           document.getElementById('references-section').classList.add('hidden');
+           document.getElementById('ethical-tier-summary').classList.remove('hidden');
+       }
+
+       function showTask(taskId) {
+           hideAllSections();
+           document.getElementById(taskId).classList.remove('hidden');
+           
+           // Hide references, show ethical tier summary in footer
+           document.getElementById('references-section').classList.add('hidden');
+           document.getElementById('ethical-tier-summary').classList.remove('hidden');
+       }
+
+       function hideAllSections() {
+           // Hide all sections
+           const sections = document.querySelectorAll('main section');
+           sections.forEach(section => {
+               section.classList.add('hidden');
+           });
+       }
+
+       // Toggle example visibility
+       function toggleExample(exampleId) {
+           const example = document.getElementById(exampleId);
+           const button = example.previousElementSibling;
+           const buttonText = button.querySelector('span');
+           const buttonIcon = button.querySelector('svg');
+           
+           if (example.classList.contains('hidden')) {
+               // Show example
+               example.classList.remove('hidden');
+               buttonText.textContent = 'Hide Example';
+               buttonIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />';
+           } else {
+               // Hide example
+               example.classList.add('hidden');
+               buttonText.textContent = 'Show Example';
+               buttonIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />';
+           }
+       }
+
+       // Enhanced copy to clipboard function with better visual feedback
+       function copyToClipboard(text) {
+           // Remove extra whitespace
+           text = text.trim();
+           
+           navigator.clipboard.writeText(text).then(() => {
+               // Show temporary notification
+               const notification = document.createElement('div');
+               notification.textContent = 'Copied to clipboard!';
+               notification.className = 'fixed bottom-4 left-4 bg-primary text-white px-4 py-2 rounded-md shadow-lg transform transition-all duration-300 ease-out';
+               document.body.appendChild(notification);
+               
+               // Animate notification
+               setTimeout(() => {
+                   notification.classList.add('translate-y-[-10px]');
+               }, 10);
+               
+               // Remove notification after 2 seconds with fade-out effect
+               setTimeout(() => {
+                   notification.classList.add('opacity-0');
+                   setTimeout(() => {
+                       notification.remove();
+                   }, 300);
+               }, 1700);
+           }).catch(err => {
+               console.error('Failed to copy: ', err);
+           });
+       }
+       
+       // Tier Info Modal Functions with improved interactions
+       document.addEventListener('DOMContentLoaded', function() {
+           const tierInfoButton = document.getElementById('tierInfoButton');
+           const tierInfoModal = document.getElementById('tierInfoModal');
+           const closeTierModal = document.getElementById('closeTierModal');
+           
+           // Open modal when info button is clicked
+           tierInfoButton.addEventListener('click', function() {
+               tierInfoModal.classList.remove('hidden');
+               setTimeout(() => {
+                   tierInfoModal.querySelectorAll('.space-y-5 > div').forEach((div, index) => {
+                       setTimeout(() => {
+                           div.classList.add('animate-fade-in');
+                       }, index * 100);
+                   });
+               }, 50);
+           });
+           
+           // Close modal when close button is clicked
+           closeTierModal.addEventListener('click', function() {
+               tierInfoModal.classList.add('hidden');
+           });
+           
+           // Close modal when clicking outside of it
+           tierInfoModal.addEventListener('click', function(e) {
+               if (e.target === tierInfoModal) {
+                   tierInfoModal.classList.add('hidden');
+               }
+           });
+           
+           // Close modal with Escape key
+           document.addEventListener('keydown', function(e) {
+               if (e.key === 'Escape' && !tierInfoModal.classList.contains('hidden')) {
+                   tierInfoModal.classList.add('hidden');
+               }
+           });
+           
+           // Add subtle animation to cherry blossom decorations
+           const blossomDecorations = document.querySelectorAll('.text-secondary.text-xs');
+           blossomDecorations.forEach(blossom => {
+               setInterval(() => {
+                   blossom.style.opacity = (Math.random() * 0.4 + 0.4).toString(); // Random opacity between 0.4 and 0.8
+               }, 2000 + Math.random() * 1000); // Random interval
+           });
+       });
+   </script>
+</body>
+</html>
