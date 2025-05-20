@@ -2,7 +2,7 @@
 
 ![CARe Framework Badge](https://img.shields.io/badge/CARe%20Framework-Prompt%20Library-5D5CDE)
 ![License](https://img.shields.io/badge/License-MIT-blue)
-[![DOI](https://sandbox.zenodo.org/badge/984780094.svg)](https://handle.stage.datacite.org/10.5281/zenodo.15475953)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15475953.svg)](https://doi.org/10.5281/zenodo.15475953)
 
 
 ## Prompt library for AI-assisted academic writing with ethical guidance
