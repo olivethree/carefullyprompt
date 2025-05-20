@@ -1,8 +1,9 @@
 # CARefully prompt your AI
 
 ![CARe Framework Badge](https://img.shields.io/badge/CARe%20Framework-Prompt%20Library-5D5CDE)
-![Ethical Guidance](https://img.shields.io/badge/Ethical%20Guidance-Academic%20Writing-4ade80)
 ![License](https://img.shields.io/badge/License-MIT-blue)
+[![DOI](https://sandbox.zenodo.org/badge/984780094.svg)](https://handle.stage.datacite.org/10.5072/zenodo.259251)
+
 
 ## Prompt library for AI-assisted academic writing with ethical guidance
 
@@ -78,7 +79,7 @@ Contributions are welcome! If you'd like to suggest new prompts, improvements to
 
 - Cheng, A., Calhoun, A., & Reedy, G. (2025). Artificial intelligence-assisted academic writing: recommendations for ethical use. *Advances in Simulation, 10*(1), 22. https://doi.org/10.1186/s41077-025-00350-6
   
-- Oliveira, M. B. (2025). CARe framework for responsible academic writing assisted by Generative AI. *SEFI Summer School*.
+- Oliveira, M. B. (2025). CARefully prompt your AI: A prompt library for AI-assisted academic writing with ethical guidance (Version 1.0.0) [Computer software]. Zenodo. [https://doi.org/10.5072/zenodo.259251](https://doi.org/10.5072/zenodo.259251)
 
 ## License
 
