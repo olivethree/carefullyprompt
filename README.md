@@ -29,7 +29,7 @@ Simply browse categories, select a specific task, and copy the prompt template t
 
 ## The CARe Framework
 
-The library is organized according to the CARe framework (Oliveira, 2025), with a focus on the Articulate stage:
+The library is organized according to the CARe framework, with a focus on the **Articulate** stage:
 
 ### C: Collect (Gather information/ideas & Plan your content)
 - **What it is:** Working with AI to efficiently gather and organize ideas and sources for your writing (e.g. finding sources through questions, brainstorming with AI)
@@ -74,6 +74,10 @@ Contributions are welcome! If you'd like to suggest new prompts, improvements to
 3. Commit your changes (`git commit -m 'Add some AmazingPrompt'`)
 4. Push to the branch (`git push origin feature/AmazingPrompt`)
 5. Open a Pull Request
+
+## Upcoming features
+
+- Tool recommendations and prompt templates for **Collect**, **Refine**, and **evaluate**.
 
 ## References
 
