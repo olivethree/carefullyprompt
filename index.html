@@ -374,8 +374,6 @@
                     
                 </div>
             </section>
-
-            <!-- Placeholder sections for new stages (to be implemented in next updates) -->
             
             <!-- Collect Stage -->
             <section id="collect" class="py-4 hidden">
@@ -938,6 +936,1280 @@ I have collected 15 academic articles on Dutch cultural traditions, 8 sources on
                     </div>
                 </div>
             </section>
+
+
+            <!-- Articulate Stage -->
+
+            <!-- Articulate Stage -->
+<section id="articulate" class="py-4 hidden">
+    <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 shadow-sm border border-neutral-300 dark:border-neutral-700">
+        <div class="flex items-center mb-6">
+            <button class="back-button mr-4" onclick="showIntroduction()">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Back
+            </button>
+            <h2 class="text-2xl font-serif font-bold">Articulate: Drafting & Editing</h2>
+        </div>
+        <p class="mb-6 text-accent dark:text-neutral-200">Select a specific category to find prompts that will help you draft and refine your academic content:</p>
+
+        <!-- Sub-Categories with improved hover effects -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="subcategory-card" onclick="showCategory('improve')">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-serif font-semibold text-primary dark:text-secondary">Improve Existing Text</h3>
+                    <span class="tier-badge tier-2">Tier 2</span>
+                </div>
+                <p class="text-sm text-accent dark:text-neutral-300">Enhance clarity, conciseness, and flow of your drafted content.</p>
+            </div>
+
+            <div class="subcategory-card" onclick="showCategory('drafting')">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-serif font-semibold text-primary dark:text-secondary">Drafting Assistance</h3>
+                    <span class="tier-badge tier-2">Tier 2</span>
+                </div>
+                <p class="text-sm text-accent dark:text-neutral-300">Generate starting points and building blocks for your academic writing.</p>
+            </div>
+
+            <div class="subcategory-card" onclick="showCategory('voice')">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-serif font-semibold text-primary dark:text-secondary">Maintain Voice & Precision</h3>
+                    <span class="tier-badge tier-2">Tier 2</span>
+                </div>
+                <p class="text-sm text-accent dark:text-neutral-300">Ensure consistency in style while preserving academic precision.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Improve Existing Text Category Section -->
+<section id="improve" class="py-4 hidden">
+    <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 shadow-sm border border-neutral-300 dark:border-neutral-700">
+        <div class="flex items-center mb-6">
+            <button class="back-button mr-4" onclick="showCategory('articulate')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Back
+            </button>
+            <h2 class="text-2xl font-serif font-bold">Improve Existing Text</h2>
+        </div>
+        <p class="mb-6 text-accent dark:text-neutral-200">Select a specific task to find prompts that will help refine your existing academic content:</p>
+
+        <!-- Sub-Categories with improved hover effects -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="subcategory-card" onclick="showTask('rephrase-clarity')">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-serif font-semibold text-primary dark:text-secondary">Rephrase for Clarity</h3>
+                    <span class="tier-badge tier-2">Tier 2</span>
+                </div>
+                <p class="text-sm text-accent dark:text-neutral-300">Make complex ideas more accessible without sacrificing meaning.</p>
+            </div>
+
+            <div class="subcategory-card" onclick="showTask('make-concise')">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-serif font-semibold text-primary dark:text-secondary">Make More Concise</h3>
+                    <span class="tier-badge tier-2">Tier 2</span>
+                </div>
+                <p class="text-sm text-accent dark:text-neutral-300">Reduce wordiness while preserving essential content.</p>
+            </div>
+
+            <div class="subcategory-card" onclick="showTask('enhance-flow')">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-serif font-semibold text-primary dark:text-secondary">Enhance Flow/Transitions</h3>
+                    <span class="tier-badge tier-2">Tier 2</span>
+                </div>
+                <p class="text-sm text-accent dark:text-neutral-300">Improve connection between ideas and paragraphs.</p>
+            </div>
+
+            <div class="subcategory-card" onclick="showTask('adjust-tone')">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-serif font-semibold text-primary dark:text-secondary">Adjust Academic Tone/Level</h3>
+                    <span class="tier-badge tier-2">Tier 2</span>
+                </div>
+                <p class="text-sm text-accent dark:text-neutral-300">Modify the formality and complexity for your target audience.</p>
+            </div>
+
+            <div class="subcategory-card" onclick="showTask('simplify-complex')">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-serif font-semibold text-primary dark:text-secondary">Simplify Complex Sentences</h3>
+                    <span class="tier-badge tier-2">Tier 2</span>
+                </div>
+                <p class="text-sm text-accent dark:text-neutral-300">Break down lengthy, intricate sentences while maintaining meaning.</p>
+            </div>
+
+            <div class="subcategory-card" onclick="showTask('remove-redundancy')">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-serif font-semibold text-primary dark:text-secondary">Remove Redundancy</h3>
+                    <span class="tier-badge tier-2">Tier 2</span>
+                </div>
+                <p class="text-sm text-accent dark:text-neutral-300">Identify and eliminate repetitive elements in your writing.</p>
+            </div>
+
+            <div class="subcategory-card" onclick="showTask('check-grammar')">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-serif font-semibold text-primary dark:text-secondary">Check Grammar/Spelling</h3>
+                    <span class="tier-badge tier-1">Tier 1</span>
+                </div>
+                <p class="text-sm text-accent dark:text-neutral-300">Identify and correct grammatical and spelling errors.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Drafting Assistance Category Section -->
+<section id="drafting" class="py-4 hidden">
+    <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 shadow-sm border border-neutral-300 dark:border-neutral-700">
+        <div class="flex items-center mb-6">
+            <button class="back-button mr-4" onclick="showCategory('articulate')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Back
+            </button>
+            <h2 class="text-2xl font-serif font-bold">Drafting Assistance</h2>
+        </div>
+        <p class="mb-6 text-accent dark:text-neutral-200">Select a specific task to find prompts that will help you generate new academic content:</p>
+
+        <!-- Sub-Categories with improved hover effects -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="subcategory-card" onclick="showTask('starting-sentence')">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-serif font-semibold text-primary dark:text-secondary">Generate Starting Sentence</h3>
+                    <span class="tier-badge tier-2">Tier 2</span>
+                </div>
+                <p class="text-sm text-accent dark:text-neutral-300">Create strong opening sentences for paragraphs or sections.</p>
+            </div>
+
+            <div class="subcategory-card" onclick="showTask('transition-sentence')">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-serif font-semibold text-primary dark:text-secondary">Suggest Transition Sentence</h3>
+                    <span class="tier-badge tier-2">Tier 2</span>
+                </div>
+                <p class="text-sm text-accent dark:text-neutral-300">Develop smooth connections between ideas or paragraphs.</p>
+            </div>
+
+            <div class="subcategory-card" onclick="showTask('concluding-sentence')">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-serif font-semibold text-primary dark:text-secondary">Draft Concluding Sentence</h3>
+                    <span class="tier-badge tier-2">Tier 2</span>
+                </div>
+                <p class="text-sm text-accent dark:text-neutral-300">Create effective paragraph or section closures.</p>
+            </div>
+
+            <div class="subcategory-card" onclick="showTask('expand-keywords')">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-serif font-semibold text-primary dark:text-secondary">Expand on Keywords/Notes</h3>
+                    <span class="tier-badge tier-2">Tier 2</span>
+                </div>
+                <p class="text-sm text-accent dark:text-neutral-300">Develop complete sentences from notes or bullet points.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Maintain Voice & Precision Category Section -->
+<section id="voice" class="py-4 hidden">
+    <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 shadow-sm border border-neutral-300 dark:border-neutral-700">
+        <div class="flex items-center mb-6">
+            <button class="back-button mr-4" onclick="showCategory('articulate')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Back
+            </button>
+            <h2 class="text-2xl font-serif font-bold">Maintain Voice &amp; Precision</h2>
+        </div>
+        <p class="mb-6 text-accent dark:text-neutral-200">Select a specific task to find prompts that will help preserve your unique voice while maintaining academic precision:</p>
+
+        <!-- Sub-Categories with improved hover effects -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="subcategory-card" onclick="showTask('rewrite-style')">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-serif font-semibold text-primary dark:text-secondary">Rewrite in My Style</h3>
+                    <span class="tier-badge tier-2">Tier 2</span>
+                </div>
+                <p class="text-sm text-accent dark:text-neutral-300">Maintain your authentic voice in generated or revised text.</p>
+            </div>
+
+            <div class="subcategory-card" onclick="showTask('suggest-alternatives')">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-serif font-semibold text-primary dark:text-secondary">Suggest Alternatives While Keeping Key Terms</h3>
+                    <span class="tier-badge tier-2">Tier 2</span>
+                </div>
+                <p class="text-sm text-accent dark:text-neutral-300">Rework phrasing while preserving critical terminology.</p>
+            </div>
+
+            <div class="subcategory-card" onclick="showTask('avoid-generic')">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-serif font-semibold text-primary dark:text-secondary">Avoid Generic AI Phrases</h3>
+                    <span class="tier-badge tier-2">Tier 2</span>
+                </div>
+                <p class="text-sm text-accent dark:text-neutral-300">Eliminate formulaic expressions often found in AI-generated text.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- All Prompt Task Sections -->
+<!-- 1. Rephrase for Clarity -->
+<section id="rephrase-clarity" class="py-4 hidden">
+    <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 shadow-sm border border-neutral-300 dark:border-neutral-700">
+        <div class="flex items-center mb-6">
+            <button class="back-button mr-4" onclick="showCategory('improve')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Back
+            </button>
+            <h2 class="text-2xl font-serif font-bold">Rephrase for Clarity</h2>
+        </div>
+        <p class="mb-6 text-accent dark:text-neutral-200 leading-relaxed">Use these prompts to make complex academic ideas more accessible without sacrificing meaning or precision:</p>
+
+        <!-- Prompt 1 -->
+        <div class="prompt-container relative mb-10">
+            <div class="flex justify-between items-start mb-3">
+                <h3 class="font-serif font-semibold text-lg text-primary dark:text-secondary">Targeted Clarity Enhancement</h3>
+                <span class="tier-badge tier-2">Tier 2: Ethically Contingent</span>
+            </div>
+            <p class="text-sm text-accent dark:text-neutral-300 mb-4 leading-relaxed">
+                This prompt helps identify and clarify specific complex parts of your text while maintaining academic rigor. <strong>Human oversight is crucial</strong> to ensure the suggested changes maintain your intended meaning.
+            </p>
+            <div class="prompt-box relative">
+                <pre class="whitespace-pre-wrap text-sm text-accent dark:text-neutral-200">I need to improve the clarity of this academic text while maintaining its scholarly integrity. Please identify the 2-3 most complex or unclear parts and suggest clearer alternatives. Only rephrase what needs clarification:
+
+[Your academic text here]
+
+Guidelines for your response:
+- Preserve all technical terminology
+- Maintain the same level of academic rigor
+- Focus only on improving clarity without changing meaning
+- Explain briefly why each suggestion improves clarity</pre>
+                <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Example Toggle Button -->
+            <button class="example-toggle mt-4 text-sm text-primary dark:text-secondary transition-colors flex items-center cursor-pointer" onclick="toggleExample('clarity-example-1')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+                <span>Show Example</span>
+            </button>
+            
+            <!-- Hidden Example -->
+            <div id="clarity-example-1" class="example-content hidden mt-4">
+                <h4 class="text-sm font-medium text-primary dark:text-secondary mb-2">Example:</h4>
+                <pre class="whitespace-pre-wrap text-xs text-accent dark:text-neutral-200">The implementation of traditional Dutch festive observances exhibits considerable complexity with regard to the temporal and spatial allocation of celebratory customs, particularly in the juxtaposition of the Sinterklaas celebration, occurring on the fifth of December, and the subsequent Christmas observances, which simultaneously incorporate distinctly Dutch elements while demonstrating acculturation to globalized holiday practices originating from diverse cultural sources.</pre>
+            </div>
+            
+            <!-- Cherry blossom decoration -->
+            <div class="flex justify-end mt-2">
+                <span class="text-secondary text-xs opacity-50">● ● ●</span>
+            </div>
+        </div>
+
+        <!-- Prompt 2 -->
+        <div class="prompt-container relative mb-10">
+            <div class="flex justify-between items-start mb-3">
+                <h3 class="font-serif font-semibold text-lg text-primary dark:text-secondary">Full-Text Academic Clarification</h3>
+                <span class="tier-badge tier-2">Tier 2: Ethically Contingent</span>
+            </div>
+            <p class="text-sm text-accent dark:text-neutral-300 mb-4 leading-relaxed">
+                Use this prompt when you need to rework a longer passage for improved comprehension while maintaining academic precision. <strong>Carefully review all suggested changes</strong> to ensure they align with your original meaning.
+            </p>
+            <div class="prompt-box relative">
+                <pre class="whitespace-pre-wrap text-sm text-accent dark:text-neutral-200">Rephrase this academic text for improved clarity while preserving all technical concepts and maintaining academic standards. The text is intended for [specify audience, e.g., "undergraduate students," "peer reviewers," etc.].
+
+[Your academic text here]
+
+Please provide:
+1. A fully rephrased version with improved clarity
+2. A brief explanation of what you changed and why
+3. Note any technical terms you preserved exactly as written</pre>
+                <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Example Toggle Button -->
+            <button class="example-toggle mt-4 text-sm text-primary dark:text-secondary transition-colors flex items-center cursor-pointer" onclick="toggleExample('clarity-example-2')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+                <span>Show Example</span>
+            </button>
+            
+            <!-- Hidden Example -->
+            <div id="clarity-example-2" class="example-content hidden mt-4">
+                <h4 class="text-sm font-medium text-primary dark:text-secondary mb-2">Example:</h4>
+                <pre class="whitespace-pre-wrap text-xs text-accent dark:text-neutral-200">Rephrase this academic text for improved clarity while preserving all technical concepts and maintaining academic standards. The text is intended for undergraduate students in cultural anthropology.
+
+The ritualistic elements of Dutch Sinterklaas celebrations can be interpreted through multiple theoretical frameworks, including structural functionalism as proposed by Durkheim, whereby the collective festivities reinforce social solidarity; Marxist critique, which might interrogate the commodification of tradition in late-capitalist Dutch society; and postcolonial discourse analysis, which problematizes the racialized representation of Zwarte Piet within the context of the Netherlands' colonial history and contemporary multicultural tensions. The symbolic interactionism present in the tradition's performance further suggests a complex negotiation of Dutch cultural identity amidst increasing globalization and multicultural influences.</pre>
+            </div>
+            
+            <!-- Cherry blossom decoration -->
+            <div class="flex justify-end mt-2">
+                <span class="text-secondary text-xs opacity-50">● ● ●</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 2. Make More Concise -->
+<section id="make-concise" class="py-4 hidden">
+    <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 shadow-sm border border-neutral-300 dark:border-neutral-700">
+        <div class="flex items-center mb-6">
+            <button class="back-button mr-4" onclick="showCategory('improve')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Back
+            </button>
+            <h2 class="text-2xl font-serif font-bold">Make More Concise</h2>
+        </div>
+        <p class="mb-6 text-accent dark:text-neutral-200">Use these prompts to reduce wordiness while preserving essential content in your academic writing:</p>
+
+        <!-- Prompt -->
+        <div class="prompt-container relative mb-10">
+            <div class="flex justify-between items-start mb-3">
+                <h3 class="font-serif font-semibold text-lg text-primary dark:text-secondary">Strategic Word Count Reduction</h3>
+                <span class="tier-badge tier-2">Tier 2: Ethically Contingent</span>
+            </div>
+            <p class="text-sm text-accent dark:text-neutral-300 mb-4 leading-relaxed">
+                This prompt helps achieve a specific word count reduction while preserving all key information. <strong>Review the output carefully</strong> to ensure no important content has been lost in the condensing process.
+            </p>
+            <div class="prompt-box relative">
+                <pre class="whitespace-pre-wrap text-sm text-accent dark:text-neutral-200">Make this academic text approximately [X]% more concise while preserving all essential content, technical terminology, and scholarly tone:
+
+[Your academic text here]
+
+Please:
+1. Maintain the same level of technical precision
+2. Preserve all key arguments and evidence
+3. Keep all citations and references intact
+4. Focus on eliminating wordiness, redundancy, and unnecessary qualifiers
+5. Provide the word count of both the original and revised versions
+
+Indicate any significant content you removed and why it was deemed non-essential.</pre>
+                <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Example Toggle Button -->
+            <button class="example-toggle mt-4 text-sm text-primary dark:text-secondary transition-colors flex items-center cursor-pointer" onclick="toggleExample('concise-example')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+                <span>Show Example</span>
+            </button>
+            
+            <!-- Hidden Example -->
+            <div id="concise-example" class="example-content hidden mt-4">
+                <h4 class="text-sm font-medium text-primary dark:text-secondary mb-2">Example:</h4>
+                <pre class="whitespace-pre-wrap text-xs text-accent dark:text-neutral-200">Make this academic text approximately 30% more concise while preserving all essential content, technical terminology, and scholarly tone:
+
+The Dutch celebration of Sinterklaas, which occurs annually on the 5th of December, represents a distinctly significant cultural tradition that has been maintained throughout the Netherlands for many centuries. Sinterklaas, who is based on Saint Nicholas, arrives in the Netherlands by steamboat from Spain in mid-November, accompanied by his helpers called "Zwarte Piet" (Black Pete). This arrival is celebrated with considerable festivity and is broadcast on national television each year, marking the beginning of a three-week period during which children place their shoes by the fireplace or radiator in the evening, often accompanied by carrots or hay for Sinterklaas's horse, with the expectation of finding small gifts, candy, or chocolate letters in their shoes the following morning. The culmination of this period is the evening of December 5th, known as "pakjesavond" (presents evening), when larger gifts are exchanged, often accompanied by humorous poems that gently tease the recipient about their personal characteristics or notable events from the previous year.</pre>
+            </div>
+            
+            <!-- Cherry blossom decoration -->
+            <div class="flex justify-end mt-2">
+                <span class="text-secondary text-xs opacity-50">● ● ●</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 3. Enhance Flow/Transitions -->
+<section id="enhance-flow" class="py-4 hidden">
+    <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 shadow-sm border border-neutral-300 dark:border-neutral-700">
+        <div class="flex items-center mb-6">
+            <button class="back-button mr-4" onclick="showCategory('improve')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Back
+            </button>
+            <h2 class="text-2xl font-serif font-bold">Enhance Flow/Transitions</h2>
+        </div>
+        <p class="mb-6 text-accent dark:text-neutral-200">Use these prompts to improve connections between ideas and paragraphs in your academic writing:</p>
+
+        <!-- Prompt -->
+        <div class="prompt-container relative mb-10">
+            <div class="flex justify-between items-start mb-3">
+                <h3 class="font-serif font-semibold text-lg text-primary dark:text-secondary">Logical Flow Enhancement</h3>
+                <span class="tier-badge tier-2">Tier 2: Ethically Contingent</span>
+            </div>
+            <p class="text-sm text-accent dark:text-neutral-300 mb-4 leading-relaxed">
+                This prompt helps identify and improve weak transitions between paragraphs or sections. <strong>Evaluate all suggestions</strong> to ensure they reflect the logical relationships you intend to convey.
+            </p>
+            <div class="prompt-box relative">
+                <pre class="whitespace-pre-wrap text-sm text-accent dark:text-neutral-200">Analyze this academic text and improve its flow by identifying places where transitions between ideas or paragraphs are abrupt or unclear:
+
+[Your academic text here]
+
+Please:
+1. Identify specific locations where logical connections could be strengthened
+2. Suggest precise transition words, phrases, or sentences for each location
+3. Explain the logical relationship each suggestion is meant to signal (contrast, causation, addition, etc.)
+4. Maintain the scholarly tone and technical precision throughout
+5. Do not modify the core content or arguments
+
+Format your response with clearly labeled sections for each transition point.</pre>
+                <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Example Toggle Button -->
+            <button class="example-toggle mt-4 text-sm text-primary dark:text-secondary transition-colors flex items-center cursor-pointer" onclick="toggleExample('flow-example')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+                <span>Show Example</span>
+            </button>
+            
+            <!-- Hidden Example -->
+            <div id="flow-example" class="example-content hidden mt-4">
+                <h4 class="text-sm font-medium text-primary dark:text-secondary mb-2">Example:</h4>
+                <pre class="whitespace-pre-wrap text-xs text-accent dark:text-neutral-200">Analyze this academic text and improve its flow by identifying places where transitions between ideas or paragraphs are abrupt or unclear:
+
+The celebration of Sinterklaas has deep historical roots in Dutch culture. The tradition dates back to medieval times and has evolved significantly over the centuries. 
+
+The figure of Sinterklaas is based on Saint Nicholas, a 4th-century Greek bishop known for his generosity. He became the patron saint of children.
+
+Modern Sinterklaas celebrations begin with the arrival of Sinterklaas by steamboat from Spain in mid-November. This event is called "intocht" and is broadcast on national television. Children put their shoes near the fireplace in the weeks leading up to December 5th.
+
+December 5th is known as "pakjesavond" or presents evening. Families gather to exchange gifts, which are often accompanied by poems. These poems typically contain gentle teasing about the recipient.
+
+Christmas is celebrated separately on December 25th in the Netherlands. Dutch Christmas has been influenced by American and German traditions.</pre>
+            </div>
+            
+            <!-- Cherry blossom decoration -->
+            <div class="flex justify-end mt-2">
+                <span class="text-secondary text-xs opacity-50">● ● ●</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 4. Adjust Academic Tone/Level -->
+<section id="adjust-tone" class="py-4 hidden">
+    <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 shadow-sm border border-neutral-300 dark:border-neutral-700">
+        <div class="flex items-center mb-6">
+            <button class="back-button mr-4" onclick="showCategory('improve')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Back
+            </button>
+            <h2 class="text-2xl font-serif font-bold">Adjust Academic Tone/Level</h2>
+        </div>
+        <p class="mb-6 text-accent dark:text-neutral-200">Use these prompts to modify the formality and complexity for your target audience:</p>
+
+        <!-- Prompt -->
+        <div class="prompt-container relative mb-10">
+            <div class="flex justify-between items-start mb-3">
+                <h3 class="font-serif font-semibold text-lg text-primary dark:text-secondary">Audience-Specific Tone Adjustment</h3>
+                <span class="tier-badge tier-2">Tier 2: Ethically Contingent</span>
+            </div>
+            <p class="text-sm text-accent dark:text-neutral-300 mb-4 leading-relaxed">
+                This prompt adapts your content to a specific academic audience while maintaining all essential information. <strong>Review the output carefully</strong> to ensure it maintains the correct level of precision.
+            </p>
+            <div class="prompt-box relative">
+                <pre class="whitespace-pre-wrap text-sm text-accent dark:text-neutral-200">Adjust the tone and complexity level of this academic text for a [specific audience, e.g., "undergraduate students," "interdisciplinary conference," "grant review committee"]:
+
+[Your academic text here]
+
+Please provide:
+1. A revised version with tone and complexity appropriate for the specified audience
+2. Maintain all essential academic content and technical concepts
+3. Explain the key adjustments you made and why they're appropriate for this audience
+
+Tone guidelines:
+- Formality level: [specify, e.g., "highly formal," "accessible but scholarly"]
+- Technical vocabulary: [specify, e.g., "define technical terms," "maintain specialized vocabulary"]
+- Sentence complexity: [specify preference]</pre>
+                <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Example Toggle Button -->
+            <button class="example-toggle mt-4 text-sm text-primary dark:text-secondary transition-colors flex items-center cursor-pointer" onclick="toggleExample('tone-example')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+                <span>Show Example</span>
+            </button>
+            
+            <!-- Hidden Example -->
+            <div id="tone-example" class="example-content hidden mt-4">
+                <h4 class="text-sm font-medium text-primary dark:text-secondary mb-2">Example:</h4>
+                <pre class="whitespace-pre-wrap text-xs text-accent dark:text-neutral-200">Adjust the tone and complexity level of this academic text for an undergraduate audience, making it more accessible while maintaining scholarly credibility:
+
+The ritualistic elements of Dutch Sinterklaas celebrations can be interpreted through multiple theoretical frameworks, including structural functionalism as proposed by Durkheim, whereby the collective festivities reinforce social solidarity; Marxist critique, which might interrogate the commodification of tradition in late-capitalist Dutch society; and postcolonial discourse analysis, which problematizes the racialized representation of Zwarte Piet within the context of the Netherlands' colonial history and contemporary multicultural tensions. The symbolic interactionism present in the tradition's performance further suggests a complex negotiation of Dutch cultural identity amidst increasing globalization and multicultural influences.
+
+Tone guidelines:
+- Formality level: Moderate (accessible yet scholarly)
+- Technical vocabulary: Define or simplify when necessary
+- Sentence complexity: Reduce without oversimplifying concepts</pre>
+            </div>
+            
+            <!-- Cherry blossom decoration -->
+            <div class="flex justify-end mt-2">
+                <span class="text-secondary text-xs opacity-50">● ● ●</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 5. Simplify Complex Sentences -->
+<section id="simplify-complex" class="py-4 hidden">
+    <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 shadow-sm border border-neutral-300 dark:border-neutral-700">
+        <div class="flex items-center mb-6">
+            <button class="back-button mr-4" onclick="showCategory('improve')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Back
+            </button>
+            <h2 class="text-2xl font-serif font-bold">Simplify Complex Sentences</h2>
+        </div>
+        <p class="mb-6 text-accent dark:text-neutral-200">Use these prompts to break down lengthy, intricate sentences while maintaining meaning:</p>
+
+        <!-- Prompt -->
+        <div class="prompt-container relative mb-10">
+            <div class="flex justify-between items-start mb-3">
+                <h3 class="font-serif font-semibold text-lg text-primary dark:text-secondary">Sentence Structure Simplification</h3>
+                <span class="tier-badge tier-2">Tier 2: Ethically Contingent</span>
+            </div>
+            <p class="text-sm text-accent dark:text-neutral-300 mb-4 leading-relaxed">
+                This prompt helps restructure complex sentences into more accessible formats while preserving technical content. <strong>Review the output</strong> to ensure no meaning is lost in the simplification process.
+            </p>
+            <div class="prompt-box relative">
+                <pre class="whitespace-pre-wrap text-sm text-accent dark:text-neutral-200">Simplify the sentence structure in this academic text while preserving all technical content and meaning:
+
+[Your academic text here]
+
+Please:
+1. Break down complex sentences with multiple clauses into shorter, clearer sentences
+2. Maintain all technical terminology and specialized vocabulary
+3. Preserve all citations and scholarly references
+4. Ensure the logical flow and relationships between ideas remain intact
+5. For each significant simplification, briefly explain your approach
+
+Focus particularly on sentences with:
+- Multiple dependent clauses
+- Extended parenthetical phrases
+- Excessive use of semicolons
+- Nested or stacked modifiers</pre>
+                <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Example Toggle Button -->
+            <button class="example-toggle mt-4 text-sm text-primary dark:text-secondary transition-colors flex items-center cursor-pointer" onclick="toggleExample('simplify-example')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+                <span>Show Example</span>
+            </button>
+            
+            <!-- Hidden Example -->
+            <div id="simplify-example" class="example-content hidden mt-4">
+                <h4 class="text-sm font-medium text-primary dark:text-secondary mb-2">Example:</h4>
+                <pre class="whitespace-pre-wrap text-xs text-accent dark:text-neutral-200">Simplify the sentence structure in this academic text while preserving all technical content and meaning:
+
+The contemporary manifestation of the Sinterklaasfeest, notwithstanding its ostensible continuity with historical Dutch cultural practices that can be traced to the medieval veneration of St. Nicholas of Myra, whose feast day on December 6th provides the calendrical basis for the celebration, has undergone significant transformations in its symbolic content and material practices, particularly with respect to the controversial figure of Zwarte Piet, whose representation has been contested and renegotiated in recent decades within the context of postcolonial critiques and multicultural discourse that have prompted various municipalities, educational institutions, and media organizations to implement modifications to the traditional blackface portrayal, while simultaneously eliciting resistance from those who perceive such changes as an unwarranted concession to political correctness that threatens to undermine the integrity of Dutch cultural heritage.</pre>
+            </div>
+            
+            <!-- Cherry blossom decoration -->
+            <div class="flex justify-end mt-2">
+                <span class="text-secondary text-xs opacity-50">● ● ●</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 6. Remove Redundancy -->
+<section id="remove-redundancy" class="py-4 hidden">
+    <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 shadow-sm border border-neutral-300 dark:border-neutral-700">
+        <div class="flex items-center mb-6">
+            <button class="back-button mr-4" onclick="showCategory('improve')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Back
+            </button>
+            <h2 class="text-2xl font-serif font-bold">Remove Redundancy</h2>
+        </div>
+        <p class="mb-6 text-accent dark:text-neutral-200">Use these prompts to identify and eliminate repetitive elements in your writing:</p>
+
+        <!-- Prompt -->
+        <div class="prompt-container relative mb-10">
+            <div class="flex justify-between items-start mb-3">
+                <h3 class="font-serif font-semibold text-lg text-primary dark:text-secondary">Redundancy Identification and Elimination</h3>
+                <span class="tier-badge tier-2">Tier 2: Ethically Contingent</span>
+            </div>
+            <p class="text-sm text-accent dark:text-neutral-300 mb-4 leading-relaxed">
+                This prompt helps identify different types of redundancies in your writing. <strong>Review the suggested changes</strong> to ensure important distinctions aren't lost during editing.
+            </p>
+            <div class="prompt-box relative">
+                <pre class="whitespace-pre-wrap text-sm text-accent dark:text-neutral-200">Identify and eliminate redundant elements in this academic text while preserving all essential content:
+
+[Your academic text here]
+
+Please identify and address:
+1. Repeated concepts or ideas expressed in different ways
+2. Unnecessary word repetition that doesn't serve a rhetorical purpose
+3. Redundant phrases (e.g., "absolutely essential," "basic fundamentals")
+4. Overlapping or duplicative examples
+5. Unnecessarily restating information that's already been established
+
+Provide:
+- A revised version with redundancies eliminated
+- A brief explanation of what you removed and why
+- Confirmation that all essential academic content and technical terminology remains intact</pre>
+                <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Example Toggle Button -->
+            <button class="example-toggle mt-4 text-sm text-primary dark:text-secondary transition-colors flex items-center cursor-pointer" onclick="toggleExample('redundancy-example')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+                <span>Show Example</span>
+            </button>
+            
+            <!-- Hidden Example -->
+            <div id="redundancy-example" class="example-content hidden mt-4">
+                <h4 class="text-sm font-medium text-primary dark:text-secondary mb-2">Example:</h4>
+                <pre class="whitespace-pre-wrap text-xs text-accent dark:text-neutral-200">Identify and eliminate redundant elements in this academic text while preserving all essential content:
+
+The Dutch celebration of King's Day, also known as Koningsdag in the Dutch language, is a national holiday that takes place annually every year on April 27th to commemorate and celebrate the birth of King Willem-Alexander of the Netherlands. This celebratory festivity, which is celebrated throughout the entire country of the Netherlands, features vibrant orange-colored decorations, clothing, and accessories, with orange being the color symbolically representing and signifying the Dutch royal family, which is known as the House of Orange-Nassau. During this festive celebration, numerous cities and towns across the Netherlands organize and arrange outdoor festivals, concerts, and street markets where citizens and visitors alike can sell their used or secondhand items, creating what the Dutch refer to as a "vrijmarkt" or free market. Additionally, many celebratory festivities also take place on the canals of Amsterdam, where numerous boats full of celebrating people sail through the historic waterways while playing music and engaging in festivities.</pre>
+            </div>
+            
+            <!-- Cherry blossom decoration -->
+            <div class="flex justify-end mt-2">
+                <span class="text-secondary text-xs opacity-50">● ● ●</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 7. Check Grammar/Spelling -->
+<section id="check-grammar" class="py-4 hidden">
+    <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 shadow-sm border border-neutral-300 dark:border-neutral-700">
+        <div class="flex items-center mb-6">
+            <button class="back-button mr-4" onclick="showCategory('improve')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Back
+            </button>
+            <h2 class="text-2xl font-serif font-bold">Check Grammar/Spelling</h2>
+        </div>
+        <p class="mb-6 text-accent dark:text-neutral-200">Use these prompts to identify and correct grammatical and spelling errors in your academic writing:</p>
+
+        <!-- Prompt -->
+        <div class="prompt-container relative mb-10">
+            <div class="flex justify-between items-start mb-3">
+                <h3 class="font-serif font-semibold text-lg text-primary dark:text-secondary">Academic Proofreading</h3>
+                <span class="tier-badge tier-1">Tier 1: Ethically Acceptable</span>
+            </div>
+            <p class="text-sm text-accent dark:text-neutral-300 mb-4 leading-relaxed">
+                This prompt provides a thorough check of grammar, spelling, and punctuation while preserving all content and meaning.
+            </p>
+            <div class="prompt-box relative">
+                <pre class="whitespace-pre-wrap text-sm text-accent dark:text-neutral-200">Proofread this academic text for grammar, spelling, and punctuation errors only. Do not alter content, meaning, or writing style:
+
+[Your academic text here]
+
+Please:
+1. Correct all mechanical errors (spelling, grammar, punctuation)
+2. Pay special attention to subject-verb agreement, verb tense consistency, and proper article usage
+3. Preserve all technical terminology exactly as written
+4. Maintain all citations in their original format
+5. Format your response with:
+   a) The corrected version
+   b) A list of corrections made with brief explanations
+
+For discipline-specific conventions, I am writing in [specify field, e.g., "linguistics," "computer science"] following [specify style, e.g., "APA," "Chicago"].</pre>
+                <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Example Toggle Button -->
+            <button class="example-toggle mt-4 text-sm text-primary dark:text-secondary transition-colors flex items-center cursor-pointer" onclick="toggleExample('grammar-example')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+                <span>Show Example</span>
+            </button>
+            
+            <!-- Hidden Example -->
+            <div id="grammar-example" class="example-content hidden mt-4">
+                <h4 class="text-sm font-medium text-primary dark:text-secondary mb-2">Example:</h4>
+                <pre class="whitespace-pre-wrap text-xs text-accent dark:text-neutral-200">Proofread this academic text for grammar, spelling, and punctuation errors only. Do not alter content, meaning, or writing style:
+
+The Dutch new years celebration known as "Oud en Nieuw" (Old and New) combines several tradtional elements that make it distintive from other European celebrations. On December 31st, many Dutch families prepare "oliebollen," which are deep-fried doughnut-like pasties filled with raisins or currents and covered in powdered suger. As midnight approachs, people gather to watch the countdown and at exactly twelve o'clock, fireworks are lit througout neighborhoods accross the country, creating a spectacular display that can last for upto an hour. The following morning, on Januery 1st, a common tradition in some dutch coastal towns is the "Nieuwjaarsduik," or New Years dive, where participents plunge into the cold North Sea. This practice, believed to bring good fortune, attracts thousands of swimmers each year despite the frigid tempertures which often hovers around 5 degree Celsius.
+
+For discipline-specific conventions, I am writing in cultural anthropology following Chicago style.</pre>
+            </div>
+            
+            <!-- Cherry blossom decoration -->
+            <div class="flex justify-end mt-2">
+                <span class="text-secondary text-xs opacity-50">● ● ●</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 8. Generate Starting Sentence -->
+<section id="starting-sentence" class="py-4 hidden">
+    <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 shadow-sm border border-neutral-300 dark:border-neutral-700">
+        <div class="flex items-center mb-6">
+            <button class="back-button mr-4" onclick="showCategory('drafting')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Back
+            </button>
+            <h2 class="text-2xl font-serif font-bold">Generate Starting Sentence</h2>
+        </div>
+        <p class="mb-6 text-accent dark:text-neutral-200">Use these prompts to create strong opening sentences for paragraphs or sections:</p>
+
+        <!-- Prompt -->
+        <div class="prompt-container relative mb-10">
+            <div class="flex justify-between items-start mb-3">
+                <h3 class="font-serif font-semibold text-lg text-primary dark:text-secondary">Context-Aware Topic Sentence</h3>
+                <span class="tier-badge tier-2">Tier 2: Ethically Contingent</span>
+            </div>
+            <p class="text-sm text-accent dark:text-neutral-300 mb-4 leading-relaxed">
+                This prompt helps create effective topic sentences that introduce new paragraphs while maintaining flow from previous content. <strong>Choose the option that best matches your writing voice</strong> and modify as needed.
+            </p>
+            <div class="prompt-box relative">
+                <pre class="whitespace-pre-wrap text-sm text-accent dark:text-neutral-200">Generate 3-4 alternative academic topic sentences for a paragraph that will discuss [specific aspect/concept]. The paragraph will follow this preceding content:
+
+[Previous paragraph or context]
+
+The new paragraph should:
+1. Clearly signal the shift to [the specific aspect/concept]
+2. Connect logically to the preceding content
+3. Use appropriate scholarly language for [your field/discipline]
+4. Set the stage for an in-depth discussion of [specific aspect/concept]
+
+Provide varied sentence structures and transition strategies with a brief explanation of how each option works.</pre>
+                <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Example Toggle Button -->
+            <button class="example-toggle mt-4 text-sm text-primary dark:text-secondary transition-colors flex items-center cursor-pointer" onclick="toggleExample('starting-example')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+                <span>Show Example</span>
+            </button>
+            
+            <!-- Hidden Example -->
+            <div id="starting-example" class="example-content hidden mt-4">
+                <h4 class="text-sm font-medium text-primary dark:text-secondary mb-2">Example:</h4>
+                <pre class="whitespace-pre-wrap text-xs text-accent dark:text-neutral-200">Generate 3-4 alternative academic topic sentences for a paragraph that will discuss the evolution of St. Nicholas into the Dutch Sinterklaas figure. The paragraph will follow this preceding content:
+
+The celebration of Sinterklaas on December 5th remains the most important Dutch gift-giving holiday, despite increasing influence from Christmas traditions. This holiday centers around a character whose origins lie in religious history, though the modern celebration has largely secularized.
+
+The new paragraph should:
+1. Clearly signal the shift to the historical evolution of the Sinterklaas figure
+2. Connect logically to the preceding content about the holiday's importance
+3. Use appropriate scholarly language for cultural history
+4. Set the stage for an in-depth discussion of how St. Nicholas transformed into Sinterklaas
+
+Provide varied sentence structures and transition strategies with a brief explanation of how each option works.</pre>
+            </div>
+            
+            <!-- Cherry blossom decoration -->
+            <div class="flex justify-end mt-2">
+                <span class="text-secondary text-xs opacity-50">● ● ●</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 9. Suggest Transition Sentence -->
+<section id="transition-sentence" class="py-4 hidden">
+    <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 shadow-sm border border-neutral-300 dark:border-neutral-700">
+        <div class="flex items-center mb-6">
+            <button class="back-button mr-4" onclick="showCategory('drafting')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Back
+            </button>
+            <h2 class="text-2xl font-serif font-bold">Suggest Transition Sentence</h2>
+        </div>
+        <p class="mb-6 text-accent dark:text-neutral-200">Use these prompts to develop smooth connections between ideas or paragraphs:</p>
+
+        <!-- Prompt -->
+        <div class="prompt-container relative mb-10">
+            <div class="flex justify-between items-start mb-3">
+                <h3 class="font-serif font-semibold text-lg text-primary dark:text-secondary">Context-Based Transition Generator</h3>
+                <span class="tier-badge tier-2">Tier 2: Ethically Contingent</span>
+            </div>
+            <p class="text-sm text-accent dark:text-neutral-300 mb-4 leading-relaxed">
+                This prompt helps create appropriate transitions based on the specific content being connected. <strong>You must provide both paragraphs</strong> to get meaningful and contextually appropriate transitions.
+            </p>
+            <div class="prompt-box relative">
+                <pre class="whitespace-pre-wrap text-sm text-accent dark:text-neutral-200">Generate 3-4 alternative academic transition sentences to connect these two paragraphs while maintaining scholarly tone:
+
+First paragraph:
+[Content of first paragraph]
+
+Second paragraph:
+[Content of second paragraph]
+
+The logical relationship between these paragraphs is [describe relationship, e.g., "contrast," "elaboration," "cause-effect," "sequence," etc.].
+
+For each alternative transition:
+1. Create a sentence that clearly connects the key ideas from both paragraphs
+2. Use academic language appropriate for [your field or discipline]
+3. Briefly explain how the transition works logically
+4. Vary the transition strategies (e.g., use of conjunctive adverbs, reference to preceding ideas, etc.)</pre>
+                <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Example Toggle Button -->
+            <button class="example-toggle mt-4 text-sm text-primary dark:text-secondary transition-colors flex items-center cursor-pointer" onclick="toggleExample('transition-example')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+                <span>Show Example</span>
+            </button>
+            
+            <!-- Hidden Example -->
+            <div id="transition-example" class="example-content hidden mt-4">
+                <h4 class="text-sm font-medium text-primary dark:text-secondary mb-2">Example:</h4>
+                <pre class="whitespace-pre-wrap text-xs text-accent dark:text-neutral-200">Generate 3-4 alternative academic transition sentences to connect these two paragraphs while maintaining scholarly tone:
+
+First paragraph:
+The Sinterklaas celebration includes several distinctive food traditions that differentiate it from other Dutch holidays. Chief among these are the kruidnoten and pepernoten, small spiced cookies that are often scattered or thrown by Zwarte Piet characters as they accompany Sinterklaas through towns and cities. Additionally, chocolate letters corresponding to recipients' initials are popular gifts, particularly for children.
+
+Second paragraph:
+The tradition of leaving carrots and hay in shoes for Sinterklaas's horse dates back several centuries. Historical records from the 17th century mention children placing food in shoes or clogs, with the expectation of receiving small gifts in return. This practice created an interactive element to the celebration, allowing children to feel personally connected to the mythical figure.
+
+The logical relationship between these paragraphs is: transition from food consumed by humans to food left for the Sinterklaas horse, both being central to the tradition's material culture.
+
+For each alternative transition:
+1. Create a sentence that clearly connects the key ideas from both paragraphs
+2. Use academic language appropriate for cultural anthropology
+3. Briefly explain how the transition works logically
+4. Vary the transition strategies (e.g., use of conjunctive adverbs, reference to preceding ideas, etc.)</pre>
+            </div>
+            
+            <!-- Cherry blossom decoration -->
+            <div class="flex justify-end mt-2">
+                <span class="text-secondary text-xs opacity-50">● ● ●</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 10. Draft Concluding Sentence -->
+<section id="concluding-sentence" class="py-4 hidden">
+    <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 shadow-sm border border-neutral-300 dark:border-neutral-700">
+        <div class="flex items-center mb-6">
+            <button class="back-button mr-4" onclick="showCategory('drafting')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Back
+            </button>
+            <h2 class="text-2xl font-serif font-bold">Draft Concluding Sentence</h2>
+        </div>
+        <p class="mb-6 text-accent dark:text-neutral-200">Use these prompts to create effective paragraph or section closures:</p>
+
+        <!-- Prompt -->
+        <div class="prompt-container relative mb-10">
+            <div class="flex justify-between items-start mb-3">
+                <h3 class="font-serif font-semibold text-lg text-primary dark:text-secondary">Paragraph Conclusion Generator</h3>
+                <span class="tier-badge tier-2">Tier 2: Ethically Contingent</span>
+            </div>
+            <p class="text-sm text-accent dark:text-neutral-300 mb-4 leading-relaxed">
+                This prompt helps create effective concluding sentences that reinforce key paragraph points. <strong>You must provide the full paragraph</strong> for appropriate context.
+            </p>
+            <div class="prompt-box relative">
+                <pre class="whitespace-pre-wrap text-sm text-accent dark:text-neutral-200">Generate 3 alternative academic concluding sentences for this paragraph that effectively synthesize its main point:
+
+[Your paragraph text]
+
+Please provide concluding sentences that:
+1. Reinforce the paragraph's key point without simply restating the topic sentence
+2. Provide appropriate scholarly closure to the idea
+3. Use academic language appropriate for [your field or audience level]
+4. Optional: hint at implications or connection to the next topic if appropriate
+
+For each option, briefly note what conclusion strategy it employs (e.g., synthesis, implication, reinforcement, future direction).</pre>
+                <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Example Toggle Button -->
+            <button class="example-toggle mt-4 text-sm text-primary dark:text-secondary transition-colors flex items-center cursor-pointer" onclick="toggleExample('concluding-example')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+                <span>Show Example</span>
+            </button>
+            
+            <!-- Hidden Example -->
+            <div id="concluding-example" class="example-content hidden mt-4">
+                <h4 class="text-sm font-medium text-primary dark:text-secondary mb-2">Example:</h4>
+                <pre class="whitespace-pre-wrap text-xs text-accent dark:text-neutral-200">Generate 3 alternative academic concluding sentences for this paragraph that effectively synthesize its main point:
+
+The transformation of the Zwarte Piet character in Dutch Sinterklaas celebrations demonstrates how traditional cultural practices evolve in response to changing social attitudes. Historically portrayed as a Moorish servant with blackface makeup, red lips, and gold earrings, this controversial figure has undergone significant modifications in recent decades. Many contemporary celebrations now feature "Sooty Piets" with smudges of soot rather than full blackface, multicolored Piets, or rainbow Piets that eliminate racial characteristics entirely. These adaptations reflect ongoing negotiations between preserving cultural heritage and addressing concerns about racial stereotyping in the Netherlands' increasingly multicultural society.</pre>
+            </div>
+            
+            <!-- Cherry blossom decoration -->
+            <div class="flex justify-end mt-2">
+                <span class="text-secondary text-xs opacity-50">● ● ●</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 11. Expand on Keywords/Notes -->
+<section id="expand-keywords" class="py-4 hidden">
+    <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 shadow-sm border border-neutral-300 dark:border-neutral-700">
+        <div class="flex items-center mb-6">
+            <button class="back-button mr-4" onclick="showCategory('drafting')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Back
+            </button>
+            <h2 class="text-2xl font-serif font-bold">Expand on Keywords/Notes</h2>
+        </div>
+        <p class="mb-6 text-accent dark:text-neutral-200">Use these prompts to develop complete sentences from notes or bullet points:</p>
+
+        <!-- Prompt -->
+        <div class="prompt-container relative mb-10">
+            <div class="flex justify-between items-start mb-3">
+                <h3 class="font-serif font-semibold text-lg text-primary dark:text-secondary">Notes-to-Paragraph Conversion</h3>
+                <span class="tier-badge tier-2">Tier 2: Ethically Contingent</span>
+            </div>
+            <p class="text-sm text-accent dark:text-neutral-300 mb-4 leading-relaxed">
+                This prompt transforms your notes or bullet points into well-formed academic paragraphs. <strong>You must provide substantial notes</strong> that include the key concepts and relationships.
+            </p>
+            <div class="prompt-box relative">
+                <pre class="whitespace-pre-wrap text-sm text-accent dark:text-neutral-200">Transform these academic notes/bullet points into a well-structured paragraph suitable for [document type] in [field or discipline]:
+
+[Your bullet points or notes]
+
+Please:
+1. Convert each point into complete academic sentences
+2. Arrange them in a logical sequence with appropriate transitions
+3. Create a cohesive paragraph with a clear topic sentence and concluding thought
+4. Maintain appropriate scholarly tone and terminology
+5. Expand on the notes where needed for clarity, but preserve the original meaning
+
+The target audience is [specify audience, e.g., "undergraduate students," "peer researchers"] and the paragraph should be approximately [X] sentences long.</pre>
+                <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Example Toggle Button -->
+            <button class="example-toggle mt-4 text-sm text-primary dark:text-secondary transition-colors flex items-center cursor-pointer" onclick="toggleExample('keywords-example')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+                <span>Show Example</span>
+            </button>
+            
+            <!-- Hidden Example -->
+            <div id="keywords-example" class="example-content hidden mt-4">
+                <h4 class="text-sm font-medium text-primary dark:text-secondary mb-2">Example:</h4>
+                <pre class="whitespace-pre-wrap text-xs text-accent dark:text-neutral-200">Transform these academic notes/bullet points into a well-structured paragraph suitable for a cultural anthropology journal article:
+
+- Dutch Sinterklaasavond (Dec 5) vs. Christmas (Dec 25)
+- Separate celebrations despite proximity
+- Gift-giving traditions differ – Sinterklaas: poems, surprises, creative packaging
+- Christmas more religious/family-oriented, less presents-focused for Dutch
+- Increasing American/global Christmas influence (Santa Claus = "Kerstman")
+- Cultural adaptation – maintain both traditions with distinct purposes
+- Some families now split gifts between both holidays
+
+The target audience is anthropology scholars and the paragraph should be approximately 8-10 sentences long.</pre>
+            </div>
+            
+            <!-- Cherry blossom decoration -->
+            <div class="flex justify-end mt-2">
+                <span class="text-secondary text-xs opacity-50">● ● ●</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 12. Rewrite in My Style -->
+<section id="rewrite-style" class="py-4 hidden">
+    <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 shadow-sm border border-neutral-300 dark:border-neutral-700">
+        <div class="flex items-center mb-6">
+            <button class="back-button mr-4" onclick="showCategory('voice')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Back
+            </button>
+            <h2 class="text-2xl font-serif font-bold">Rewrite in My Style</h2>
+        </div>
+        <p class="mb-6 text-accent dark:text-neutral-200">Use these prompts to maintain your authentic voice in generated or revised text:</p>
+
+        <!-- Prompt -->
+        <div class="prompt-container relative mb-10">
+            <div class="flex justify-between items-start mb-3">
+                <h3 class="font-serif font-semibold text-lg text-primary dark:text-secondary">Authorial Voice Preservation</h3>
+                <span class="tier-badge tier-2">Tier 2: Ethically Contingent</span>
+            </div>
+            <p class="text-sm text-accent dark:text-neutral-300 mb-4 leading-relaxed">
+                This prompt helps ensure AI-assisted content matches your personal writing style. <strong>Provide substantial samples</strong> of your own writing for the most accurate style matching.
+            </p>
+            <div class="prompt-box relative">
+                <pre class="whitespace-pre-wrap text-sm text-accent dark:text-neutral-200">Analyze these samples of my academic writing, then rewrite the target text to match my style while preserving all content:
+
+MY WRITING SAMPLES:
+[Paste 2-3 paragraphs of your own academic writing here]
+
+TEXT TO REWRITE IN MY STYLE:
+[Paste text you want rewritten here]
+
+Please:
+1. First identify the key characteristics of my writing style (sentence structure, vocabulary level, paragraph organization, tone, etc.)
+2. Rewrite the target text to match these characteristics while preserving all content and meaning
+3. Maintain all technical terms, citations, and scholarly precision
+4. Explain which specific stylistic changes you made
+
+The goal is for the rewritten text to sound authentically like my own writing.</pre>
+                <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Example Toggle Button -->
+            <button class="example-toggle mt-4 text-sm text-primary dark:text-secondary transition-colors flex items-center cursor-pointer" onclick="toggleExample('style-example')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+                <span>Show Example</span>
+            </button>
+            
+            <!-- Hidden Example -->
+            <div id="style-example" class="example-content hidden mt-4">
+                <h4 class="text-sm font-medium text-primary dark:text-secondary mb-2">Example:</h4>
+                <pre class="whitespace-pre-wrap text-xs text-accent dark:text-neutral-200">Analyze these samples of my academic writing, then rewrite the target text to match my style while preserving all content:
+
+MY WRITING SAMPLES:
+Dutch cultural traditions demonstrate remarkable resilience and adaptability in the face of modernization and globalization pressures. My research reveals how locals actively negotiate between preserving heritage practices and incorporating contemporary elements. When examining traditional festivals like Sinterklaas, we notice the interplay between commercial incentives and cultural authenticity concerns. I argue that these festivities serve as crucial sites for negotiating Dutch identity in an increasingly multicultural Europe.
+
+The historical evolution of these celebrations presents compelling evidence for cultural dynamism rather than stagnation. Throughout my fieldwork in Utrecht and Amsterdam, participants consistently emphasized the importance of continuity while acknowledging the necessity of adaptation. This apparent contradiction resolved itself through careful, community-based modifications to problematic elements while maintaining core symbolic structures and practices.
+
+TEXT TO REWRITE IN MY STYLE:
+The Dutch celebration of King's Day represents a nationalistic expression through festive practices. Participants engage in the tradition of wearing orange clothing, a color symbolizing the royal House of Orange-Nassau. This celebration includes multiple community-based activities including markets where citizens sell used goods, concerts in public spaces, and boat parades on Amsterdam's canals. The consumption of traditional foods and beverages further reinforces the connection to Dutch cultural identity.</pre>
+            </div>
+            
+            <!-- Cherry blossom decoration -->
+            <div class="flex justify-end mt-2">
+                <span class="text-secondary text-xs opacity-50">● ● ●</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 13. Suggest Alternatives While Keeping Key Terms -->
+<section id="suggest-alternatives" class="py-4 hidden">
+    <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 shadow-sm border border-neutral-300 dark:border-neutral-700">
+        <div class="flex items-center mb-6">
+            <button class="back-button mr-4" onclick="showCategory('voice')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Back
+            </button>
+            <h2 class="text-2xl font-serif font-bold">Suggest Alternatives While Keeping Key Terms</h2>
+        </div>
+        <p class="mb-6 text-accent dark:text-neutral-200">Use these prompts to rework phrasing while preserving critical terminology:</p>
+
+        <!-- Prompt -->
+        <div class="prompt-container relative mb-10">
+            <div class="flex justify-between items-start mb-3">
+                <h3 class="font-serif font-semibold text-lg text-primary dark:text-secondary">Terminology-Preserving Rephrase</h3>
+                <span class="tier-badge tier-2">Tier 2: Ethically Contingent</span>
+            </div>
+            <p class="text-sm text-accent dark:text-neutral-300 mb-4 leading-relaxed">
+                This prompt provides alternative phrasings while protecting essential terminology. <strong>You must clearly specify</strong> which terms must be preserved, and verify that they remain intact in the suggested alternatives.
+            </p>
+            <div class="prompt-box relative">
+                <pre class="whitespace-pre-wrap text-sm text-accent dark:text-neutral-200">Suggest 2-3 alternative phrasings for this academic text while preserving these exact key terms and concepts:
+
+KEY TERMS TO PRESERVE EXACTLY:
+[List the specific technical terms, phrases, or concepts that must remain unchanged]
+
+TEXT TO REPHRASE:
+[Your academic text]
+
+Please provide:
+1. Alternative phrasings that vary the sentence structure and non-technical language
+2. Brief notes on how each alternative shifts the emphasis or tone
+3. Confirmation that all key technical terms are preserved exactly as listed
+
+The alternatives should maintain academic rigor and be suitable for [audience and context].</pre>
+                <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">
+                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                   </svg>
+               </button>
+           </div>
+           
+           <!-- Example Toggle Button -->
+           <button class="example-toggle mt-4 text-sm text-primary dark:text-secondary transition-colors flex items-center cursor-pointer" onclick="toggleExample('alternatives-example')">
+               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+               </svg>
+               <span>Show Example</span>
+           </button>
+           
+           <!-- Hidden Example -->
+           <div id="alternatives-example" class="example-content hidden mt-4">
+               <h4 class="text-sm font-medium text-primary dark:text-secondary mb-2">Example:</h4>
+               <pre class="whitespace-pre-wrap text-xs text-accent dark:text-neutral-200">Suggest 2-3 alternative phrasings for this academic text while preserving these exact key terms and concepts:
+
+KEY TERMS TO PRESERVE EXACTLY:
+[Sinterklaasfeest, Zwarte Piet, koloniale geschiedenis, multiculturele samenleving, Nederlandse identiteit]
+
+TEXT TO REPHRASE:
+De controverse rond Zwarte Piet tijdens het Sinterklaasfeest reflecteert bredere debatten over de koloniale geschiedenis en de uitdagingen van een multiculturele samenleving in Nederland. Voorstanders van het behoud van de traditionele Zwarte Piet benadrukken het belang van culturele continuïteit voor de Nederlandse identiteit, terwijl critici wijzen op de raciale stereotypering inherent aan het karakter.
+
+The alternatives should maintain academic rigor and be suitable for a cultural studies journal.</pre>
+           </div>
+           
+           <!-- Cherry blossom decoration -->
+           <div class="flex justify-end mt-2">
+               <span class="text-secondary text-xs opacity-50">● ● ●</span>
+           </div>
+       </div>
+   </div>
+</section>
+
+<!-- 14. Avoid Generic AI Phrases -->
+<section id="avoid-generic" class="py-4 hidden">
+   <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 shadow-sm border border-neutral-300 dark:border-neutral-700">
+       <div class="flex items-center mb-6">
+           <button class="back-button mr-4" onclick="showCategory('voice')">
+               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+               </svg>
+               Back
+           </button>
+           <h2 class="text-2xl font-serif font-bold">Avoid Generic AI Phrases</h2>
+       </div>
+       <p class="mb-6 text-accent dark:text-neutral-200">Use these prompts to eliminate formulaic expressions often found in AI-generated text:</p>
+
+       <!-- Prompt -->
+       <div class="prompt-container relative mb-10">
+           <div class="flex justify-between items-start mb-3">
+               <h3 class="font-serif font-semibold text-lg text-primary dark:text-secondary">AI Pattern Detection and Revision</h3>
+               <span class="tier-badge tier-2">Tier 2: Ethically Contingent</span>
+           </div>
+           <p class="text-sm text-accent dark:text-neutral-300 mb-4 leading-relaxed">
+               This prompt identifies and eliminates common AI writing patterns. <strong>Choose the revised versions that best match your authentic voice</strong> and modify as needed.
+           </p>
+           <div class="prompt-box relative">
+               <pre class="whitespace-pre-wrap text-sm text-accent dark:text-neutral-200">Identify and eliminate any generic AI-like phrases or patterns in this academic text, replacing them with more authentic scholarly language:
+
+[Your academic text here]
+
+Please:
+1. Identify common AI patterns such as:
+  - Formulaic introductions or conclusions
+  - Overuse of phrases like "it is important to note," "it is worth mentioning," etc.
+  - Repetitive transition phrases
+  - Overly balanced sentence structures
+  - Predictable paragraph organization
+
+2. Replace identified patterns with more authentic academic alternatives
+
+3. Explain what you changed and why it improves authenticity
+
+The revised text should maintain all academic content while reading more like natural human scholarly writing.</pre>
+                           <button class="copy-button" onclick="copyToClipboard(this.previousElementSibling.textContent)">
+                               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                               </svg>
+                           </button>
+                       </div>
+                       
+                       <!-- Example Toggle Button -->
+                       <button class="example-toggle mt-4 text-sm text-primary dark:text-secondary transition-colors flex items-center cursor-pointer" onclick="toggleExample('generic-example')">
+                           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                           </svg>
+                           <span>Show Example</span>
+                       </button>
+                       
+                       <!-- Hidden Example -->
+                       <div id="generic-example" class="example-content hidden mt-4">
+                           <h4 class="text-sm font-medium text-primary dark:text-secondary mb-2">Example:</h4>
+                           <pre class="whitespace-pre-wrap text-xs text-accent dark:text-neutral-200">Identify and eliminate any generic AI-like phrases or patterns in this academic text, replacing them with more authentic scholarly language:
+
+It is important to note that the Dutch celebration of Sinterklaas has undergone significant transformations over time. It is worth mentioning that while the basic elements remain consistent, certain aspects have evolved in response to cultural shifts. As we can observe, the figure of Zwarte Piet has been the subject of heated debate in recent years. It goes without saying that this controversy reveals deeper tensions in Dutch society regarding race and national identity. In examining this tradition, it becomes evident that there is a delicate balance between preserving cultural heritage and addressing contemporary ethical concerns. The significance of these debates cannot be overstated, as they highlight the complex interplay between tradition and social progress. Needless to say, the evolution of this celebration provides a fascinating case study of how cultural traditions adapt to changing societal norms. It should be emphasized that these changes reflect broader patterns of cultural negotiation in European societies grappling with colonial legacies.</pre>
+                       </div>
+                       
+                       <!-- Cherry blossom decoration -->
+                       <div class="flex justify-end mt-2">
+                           <span class="text-secondary text-xs opacity-50">● ● ●</span>
+                       </div>
+                   </div>
+               </div>
+           </section>
+
+
 
             <!-- Refine Stage -->
 <section id="refine" class="py-4 hidden">
@@ -1879,6 +3151,246 @@ I'm conducting interviews with participants in controversial Dutch cultural fest
             <div class="flex justify-end mt-2">
                 <span class="text-secondary text-xs opacity-50">● ● ●</span>
             </div>
+        </div>
+    </div>
+</section>
+
+            <!-- Tools & Resources Section -->
+<section id="tools" class="py-4 hidden">
+    <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 shadow-sm border border-neutral-300 dark:border-neutral-700">
+        <div class="flex items-center mb-6">
+            <button class="back-button mr-4" onclick="showIntroduction()">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Back
+            </button>
+            <h2 class="text-2xl font-serif font-bold">Tools & Resources</h2>
+        </div>
+        <p class="mb-6 text-accent dark:text-neutral-200">Recommended AI tools and resources to support each stage of the CARe framework. <strong>Note:</strong> These tools are suggestions only. Given the rapid pace of AI development, there may be newer and more effective tools available now. Always research the latest options and evaluate them critically before use.</p>
+
+        <!-- Tools by CARe Stage -->
+        <div class="space-y-8 mb-10">
+            <!-- Collect Tools -->
+            <div class="p-6 bg-zensand dark:bg-gray-800 rounded-lg">
+                <div class="mb-4">
+                    <h3 class="text-xl font-serif text-primary dark:text-secondary"><span class="font-bold">C</span>ollect</h3>
+                </div>
+                <p class="mb-4 text-sm text-accent dark:text-neutral-200"><strong>Focus:</strong> Gather Information, Organize Ideas, Brainstorming</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-sm">
+                        <h4 class="font-semibold text-primary dark:text-secondary mb-2">NotebookLM</h4>
+                        <p class="text-sm text-accent dark:text-neutral-300 mb-2">AI-powered notebook for organizing research and extracting insights from sources</p>
+                        <a href="https://notebooklm.google.com/" target="_blank" class="text-sm text-primary dark:text-secondary hover:underline inline-flex items-center">
+                            Visit site
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </a>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-sm">
+                        <h4 class="font-semibold text-primary dark:text-secondary mb-2">Manus</h4>
+                        <p class="text-sm text-accent dark:text-neutral-300 mb-2">Research assistant for finding and organizing academic sources</p>
+                        <a href="https://manus.im/" target="_blank" class="text-sm text-primary dark:text-secondary hover:underline inline-flex items-center">
+                            Visit site
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </a>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-sm">
+                        <h4 class="font-semibold text-primary dark:text-secondary mb-2">Deep Research (Gemini)</h4>
+                        <p class="text-sm text-accent dark:text-neutral-300 mb-2">Google's AI that can perform deeper research on topics</p>
+                        <a href="https://gemini.google.com/app" target="_blank" class="text-sm text-primary dark:text-secondary hover:underline inline-flex items-center">
+                            Visit site
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </a>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-sm">
+                        <h4 class="font-semibold text-primary dark:text-secondary mb-2">Perplexity</h4>
+                        <p class="text-sm text-accent dark:text-neutral-300 mb-2">AI search engine that provides citation-backed answers</p>
+                        <a href="https://www.perplexity.ai/" target="_blank" class="text-sm text-primary dark:text-secondary hover:underline inline-flex items-center">
+                            Visit site
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Articulate Tools -->
+            <div class="p-6 bg-zensand dark:bg-gray-800 rounded-lg">
+                <div class="mb-4">
+                    <h3 class="text-xl font-serif text-primary dark:text-secondary"><span class="font-bold">A</span>rticulate</h3>
+                </div>
+                <p class="mb-4 text-sm text-accent dark:text-neutral-200"><strong>Focus:</strong> Draft & Responsibly co-generate text, Rephrase/Reframe, Scaffold/Outline</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-sm">
+                        <h4 class="font-semibold text-primary dark:text-secondary mb-2">AI Chatbots</h4>
+                        <p class="text-sm text-accent dark:text-neutral-300 mb-2">General-purpose AI assistants for text generation and refinement</p>
+                        <p class="text-xs text-accent dark:text-neutral-400">Examples: Claude, ChatGPT, Gemini, etc.</p>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-sm">
+                        <h4 class="font-semibold text-primary dark:text-secondary mb-2">Prompt Engineering Guides</h4>
+                        <p class="text-sm text-accent dark:text-neutral-300 mb-2">Resources for crafting effective prompts</p>
+                        <a href="https://cloud.google.com/discover/what-is-prompt-engineering" target="_blank" class="text-sm text-primary dark:text-secondary hover:underline inline-flex items-center">
+                            Google Guide
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </a>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-sm">
+                        <h4 class="font-semibold text-primary dark:text-secondary mb-2">Prompt Libraries</h4>
+                        <p class="text-sm text-accent dark:text-neutral-300 mb-2">Collections of pre-designed prompts for academic writing</p>
+                        <a href="https://ai-analytics.wharton.upenn.edu/generative-ai-labs/resources/prompt-library/" target="_blank" class="text-sm text-primary dark:text-secondary hover:underline inline-flex items-center">
+                            Wharton Library
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </a>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-sm">
+                        <h4 class="font-semibold text-primary dark:text-secondary mb-2">Online Courses</h4>
+                        <p class="text-sm text-accent dark:text-neutral-300 mb-2">Educational resources for writing with AI</p>
+                        <a href="https://www.coursera.org/learn/writing-with-generative-ai" target="_blank" class="text-sm text-primary dark:text-secondary hover:underline inline-flex items-center">
+                            Coursera: Writing with AI
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </a>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-sm">
+                        <h4 class="font-semibold text-primary dark:text-secondary mb-2">Dedicated AI-Powered Apps</h4>
+                        <p class="text-sm text-accent dark:text-neutral-300 mb-2">Specialized tools for academic writing</p>
+                        <div class="flex flex-col space-y-1">
+                            <a href="https://paperpal.com/" target="_blank" class="text-sm text-primary dark:text-secondary hover:underline inline-flex items-center">
+                                Paperpal
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                </svg>
+                            </a>
+                            <a href="https://jenni.ai/" target="_blank" class="text-sm text-primary dark:text-secondary hover:underline inline-flex items-center">
+                                Jenni
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Refine Tools -->
+            <div class="p-6 bg-zensand dark:bg-gray-800 rounded-lg">
+                <div class="mb-4">
+                    <h3 class="text-xl font-serif text-primary dark:text-secondary"><span class="font-bold">R</span>efine</h3>
+                </div>
+                <p class="mb-4 text-sm text-accent dark:text-neutral-200"><strong>Focus:</strong> Review, Verify, Polish, Integrity</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-sm">
+                        <h4 class="font-semibold text-primary dark:text-secondary mb-2">Critical Reading Skills</h4>
+                        <p class="text-sm text-accent dark:text-neutral-300 mb-2">Your own ability to evaluate information critically</p>
+                        <p class="text-xs italic text-accent dark:text-neutral-400">Remember: No tool can replace your critical judgment</p>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-sm">
+                        <h4 class="font-semibold text-primary dark:text-secondary mb-2">AI Grammar Checkers</h4>
+                        <p class="text-sm text-accent dark:text-neutral-300 mb-2">Tools for checking grammar, style, and clarity</p>
+                        <p class="text-xs text-accent dark:text-neutral-400">Examples: Grammarly, ProWritingAid, etc.</p>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-sm">
+                        <h4 class="font-semibold text-primary dark:text-secondary mb-2">AI Chatbots for Polishing</h4>
+                        <p class="text-sm text-accent dark:text-neutral-300 mb-2">Using AI assistants for style and conciseness suggestions</p>
+                        <p class="text-xs italic text-accent dark:text-neutral-400">Always verify changes before accepting them</p>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-sm">
+                        <h4 class="font-semibold text-primary dark:text-secondary mb-2">Academic Search Engines</h4>
+                        <p class="text-sm text-accent dark:text-neutral-300 mb-2">Resources for verifying facts and references</p>
+                        <div class="flex flex-col space-y-1">
+                            <a href="https://scholar.google.com/" target="_blank" class="text-sm text-primary dark:text-secondary hover:underline inline-flex items-center">
+                                Google Scholar
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                </svg>
+                            </a>
+                            <a href="https://openalex.org/" target="_blank" class="text-sm text-primary dark:text-secondary hover:underline inline-flex items-center">
+                                Open Alex
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Evaluate Tools -->
+            <div class="p-6 bg-zensand dark:bg-gray-800 rounded-lg">
+                <div class="mb-4">
+                    <h3 class="text-xl font-serif text-primary dark:text-secondary"><span class="font-bold">e</span>valuate</h3>
+                </div>
+                <p class="mb-4 text-sm text-accent dark:text-neutral-200"><strong>Focus:</strong> Evaluate Strategically & Ethically (Throughout)</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-sm">
+                        <h4 class="font-semibold text-primary dark:text-secondary mb-2">Critical Thinking</h4>
+                        <p class="text-sm text-accent dark:text-neutral-300 mb-2">Your ability to assess information quality and relevance</p>
+                        <p class="text-xs italic text-accent dark:text-neutral-400">This is primarily a human skill that AI can support but not replace</p>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-sm">
+                        <h4 class="font-semibold text-primary dark:text-secondary mb-2">Understanding of Biases</h4>
+                        <p class="text-sm text-accent dark:text-neutral-300 mb-2">Knowledge of information and cognitive biases</p>
+                        <p class="text-xs italic text-accent dark:text-neutral-400">Being aware of biases in both AI outputs and your own thinking</p>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-sm">
+                        <h4 class="font-semibold text-primary dark:text-secondary mb-2">Institutional Policies</h4>
+                        <p class="text-sm text-accent dark:text-neutral-300 mb-2">Knowledge of ethical guidelines for AI use in academia</p>
+                        <a href="https://conferences.ieeeauthorcenter.ieee.org/author-ethics/guidelines-and-policies/submission-policies/" target="_blank" class="text-sm text-primary dark:text-secondary hover:underline inline-flex items-center">
+                            IEEE Generative AI policy
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </a>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-sm">
+                        <h4 class="font-semibold text-primary dark:text-secondary mb-2">Fact-Checking Resources</h4>
+                        <p class="text-sm text-accent dark:text-neutral-300 mb-2">Websites dedicated to verifying factual claims</p>
+                        <p class="text-xs text-accent dark:text-neutral-400">Examples: Snopes, FactCheck.org, etc.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Note about tools -->
+        <div class="p-5 bg-white dark:bg-gray-800 rounded-lg border-l-4 border-primary dark:border-secondary mb-8">
+            <h3 class="font-serif font-semibold text-lg text-primary dark:text-secondary mb-3">Important Note About Tools</h3>
+            <p class="text-sm text-accent dark:text-neutral-200 mb-4">The tools listed above are recommendations based on what was available at the time of creation (2025). Given the rapid pace of AI development, there may be newer and more effective tools available now. Always research the latest options and evaluate them critically before use.</p>
+            <p class="text-sm text-accent dark:text-neutral-200">For the most updated version of this resource library, check: <a href="https://olivethree.github.io/carefullyprompt/" target="_blank" class="text-primary dark:text-secondary hover:underline">CARefully Prompt App</a></p>
+        </div>
+        
+        <!-- Remember section -->
+        <div class="p-5 bg-zensand dark:bg-gray-700 rounded-lg text-center">
+            <h3 class="font-serif font-semibold text-xl text-primary dark:text-secondary mb-3">Remember</h3>
+            <p class="text-accent dark:text-neutral-200 italic">AI is a tool. You are the author. Don't make it speak for you, use it to improve your own voice.</p>
         </div>
     </div>
 </section>
